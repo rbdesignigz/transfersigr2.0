@@ -37,18 +37,5 @@
     "price6Pax": 70000,
     "price4PaxUsd": 45,
     "price6PaxUsd": 65
-  },
-  {
-    "id": "dest-266994",
-    "title": "Ituzaingó",
-    "country": "Brasil",
-    "code": "BR",
-    "status": "Activo",
-    "description": "Viajemos a Ituzaingó",
-    "imageUrl": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80",
-    "price4Pax": 50000,
-    "price6Pax": 70000,
-    "price4PaxUsd": 45,
-    "price6PaxUsd": 65
   }
 ]

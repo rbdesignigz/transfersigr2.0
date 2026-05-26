@@ -10,12 +10,15 @@ import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
 import AdminPanel from './components/AdminPanel';
 import { Destination, Excursion } from './types';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from './firebase';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>('destinos');
   const [bookingModalOpen, setBookingModalOpen] = useState<boolean>(false);
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [loadingDestinations, setLoadingDestinations] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   
   // High fidelity transfer parameters to bootstrap custom booking quotes
   const [preSelected, setPreSelected] = useState<{
@@ -27,13 +30,12 @@ export default function App() {
   const fetchDestinations = async () => {
     try {
       setLoadingDestinations(true);
-      const res = await fetch('/api/destinations');
-      if (res.ok) {
-        const data = await res.json();
-        setDestinations(data);
-      } else {
-        console.error('Failed to load destinations from database API');
-      }
+      const querySnapshot = await getDocs(collection(db, 'destinations'));
+      const data: Destination[] = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() } as Destination);
+      });
+      setDestinations(data);
     } catch (err) {
       console.error('Error connecting to database API:', err);
     } finally {
@@ -56,38 +58,20 @@ export default function App() {
     setCurrentPage('traslados');
   };
 
-  // Selecting a card directly opens the system booking modal prepopulated
+  // Selecting a card directly opens WhatsApp
   const handleSelectDestination = (dest: Destination) => {
-    let originId = 'igr'; // default AR
-    let destId = 'h_igr'; 
-
-    if (dest.code === 'BR') {
-      originId = 'igu';
-      destId = 'h_igu';
-    } else if (dest.code === 'PY') {
-      originId = 'agt';
-      destId = 'h_cde';
-    }
-
-    setPreSelected({ originId, destId, passengers: 2 });
-    setBookingModalOpen(true);
+    const phoneNumber = '543757368041';
+    const message = `Hola, me interesa solicitar un traslado a: ${dest.title}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
-  // Booking an excursion opens the booking flow with details pre-established
+  // Booking an excursion opens WhatsApp directly
   const handleBookExcursion = (exc: Excursion) => {
-    let originId = 'h_igr';
-    let destId = 'c_arg'; // Cataratas AR
-
-    if (exc.country === 'BR') {
-      originId = 'h_igu';
-      destId = 'c_bra';
-    } else if (exc.country === 'PY') {
-      originId = 'h_cde';
-      destId = 'itp'; // Itaipu CDE
-    }
-
-    setPreSelected({ originId, destId, passengers: 2 });
-    setBookingModalOpen(true);
+    const phoneNumber = '543757368041';
+    const message = `Hola, me interesa reservar la excursión: ${exc.title}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   // Confirming quotation directly from QuoterPanel copies parameters and launches booking
@@ -119,12 +103,16 @@ export default function App() {
           <div className="animate-fade-in">
             {/* The matching responsive high-contrast Hero */}
             <HeroSection 
-              onSearchQuote={handleHeroSearchQuote} 
-              onNavigateToQuoter={handleNavigateToQuoter}
+              searchTerm={searchTerm}
+              onSearchChange={setSearchTerm}
             />
             {/* Argentina, Brasil, Paraguay responsive country cards */}
             <DestinationsList 
-              destinations={destinations}
+              destinations={destinations.filter(d => 
+                d.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                d.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                d.country.toLowerCase().includes(searchTerm.toLowerCase())
+              )}
               onSelectDestination={handleSelectDestination} 
               loading={loadingDestinations}
             />

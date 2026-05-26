@@ -97,16 +97,15 @@ export default function DestinationsList({ destinations, onSelectDestination, lo
           {filteredDestinations.map((dest) => (
           <article
             key={dest.id}
-            onClick={() => onSelectDestination(dest)}
-            className="bg-[#0f1214] rounded-xl overflow-hidden shadow-2xl transition-all duration-300 flex flex-col group cursor-pointer border border-[#65d6e9]/10 hover:border-[#65d6e9]/40 hover:shadow-[0_0_30px_rgba(101,214,233,0.12)] group relative"
+            className="bg-[#0f1214] rounded-xl overflow-hidden shadow-2xl transition-all duration-300 flex flex-col border border-[#65d6e9]/10 hover:border-[#65d6e9]/40 hover:shadow-[0_0_30px_rgba(101,214,233,0.12)] relative"
           >
             {/* Image section */}
-            <div className="relative h-64 overflow-hidden">
-              <img
-                alt={`${dest.title} excursion travel`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                src={dest.imageUrl}
-              />
+              <div className="relative h-64 overflow-hidden group">
+                <img
+                  alt={`${dest.title} excursion travel`}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  src={dest.imageUrl}
+                />
 
               {/* Status "Activo" */}
               <div className="absolute top-4 left-4 bg-[#65d6e9] text-[#0a0c0d] font-mono text-[9px] px-3 py-1 rounded-full font-bold uppercase tracking-widest shadow-lg select-none">
@@ -125,12 +124,9 @@ export default function DestinationsList({ destinations, onSelectDestination, lo
             {/* Content info section */}
             <div className="p-6 flex flex-col flex-grow">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-wide group-hover:text-[#65d6e9] transition-colors">
+                <h3 className="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-wide">
                   {dest.title}
                 </h3>
-                <span className="text-[#65d6e9] opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-300">
-                  <ArrowUpRight className="h-5 w-5" />
-                </span>
               </div>
               
               <p className="text-sm text-gray-400 mb-8 flex-grow font-light leading-relaxed">
@@ -139,31 +135,44 @@ export default function DestinationsList({ destinations, onSelectDestination, lo
 
               {/* Price Details table matching precisely the specifications */}
               <div className="space-y-3 pt-6 border-t border-gray-800">
-                <div className="flex justify-between items-center text-xs font-mono">
-                  <span className="text-gray-500 uppercase tracking-widest flex items-center gap-1">
-                    👥 Hasta 4 Pax (Auto):
-                  </span>
-                  <div className="text-right">
-                    <div className="text-[#65d6e9] font-bold text-sm">ARS ${dest.price4Pax.toLocaleString()}</div>
-                    <div className="text-[#65d6e9]/70 text-[10px]">USD ${dest.price4PaxUsd}</div>
+                {(dest.price4Pax > 0 || dest.price4PaxUsd > 0) && (
+                  <div className="flex justify-between items-center text-xs font-mono">
+                    <span className="text-gray-500 uppercase tracking-widest flex items-center gap-1">
+                      👥 Hasta 4 Pax (Auto):
+                    </span>
+                    <div className="text-right">
+                      {dest.price4Pax > 0 && (
+                        <div className="text-[#65d6e9] font-bold text-sm">ARS ${dest.price4Pax.toLocaleString()}</div>
+                      )}
+                      {dest.price4PaxUsd > 0 && (
+                        <div className="text-[#65d6e9]/70 text-[10px]">USD ${dest.price4PaxUsd}</div>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div className="flex justify-between items-center text-xs font-mono">
-                  <span className="text-gray-500 uppercase tracking-widest flex items-center gap-1">
-                    👥 Hasta 6 Pax (Van):
-                  </span>
-                  <div className="text-right">
-                    <div className="text-[#65d6e9] font-bold text-sm">ARS ${dest.price6Pax.toLocaleString()}</div>
-                    <div className="text-[#65d6e9]/70 text-[10px]">USD ${dest.price6PaxUsd}</div>
+                {(dest.price6Pax > 0 || dest.price6PaxUsd > 0) && (
+                  <div className="flex justify-between items-center text-xs font-mono">
+                    <span className="text-gray-500 uppercase tracking-widest flex items-center gap-1">
+                      👥 Hasta 6 Pax (Van):
+                    </span>
+                    <div className="text-right">
+                      {dest.price6Pax > 0 && (
+                        <div className="text-[#65d6e9] font-bold text-sm">ARS ${dest.price6Pax.toLocaleString()}</div>
+                      )}
+                      {dest.price6PaxUsd > 0 && (
+                        <div className="text-[#65d6e9]/70 text-[10px]">USD ${dest.price6PaxUsd}</div>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               {/* Booking CTA trigger */}
               <button 
                 type="button"
-                className="mt-5 w-full bg-transparent border border-[#65d6e9]/20 group-hover:border-[#65d6e9]/65 text-gray-400 group-hover:text-[#65d6e9] text-xs font-mono uppercase py-2.5 rounded hover:bg-[#65d6e9]/10 transition-all font-semibold tracking-wider"
+                onClick={() => onSelectDestination(dest)}
+                className="mt-5 w-full bg-transparent border border-[#65d6e9]/20 hover:border-[#65d6e9]/65 text-gray-400 hover:text-[#65d6e9] text-xs font-mono uppercase py-2.5 rounded hover:bg-[#65d6e9]/10 transition-all font-semibold tracking-wider cursor-pointer"
               >
                 COTIZAR / RESERVAR TRASLADO
               </button>

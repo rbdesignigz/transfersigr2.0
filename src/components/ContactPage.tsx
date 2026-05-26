@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageSquareCode, CheckSquare, Sparkles, Smartphone } from 'lucide-react';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 export default function ContactPage() {
   const [name, setName] = useState('');
@@ -12,7 +14,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  const handleMessageSubmit = (e: React.FormEvent) => {
+  const handleMessageSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
@@ -22,10 +24,22 @@ export default function ContactPage() {
     }
 
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      await addDoc(collection(db, 'messages'), {
+        name,
+        email,
+        phone,
+        subject,
+        message,
+        createdAt: Date.now()
+      });
       setSubmitted(true);
-    }, 1200);
+    } catch (err: any) {
+      setErrorMsg('Ocurrió un error al enviar el mensaje. Intente de nuevo más tarde.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -59,32 +73,16 @@ export default function ContactPage() {
               <div className="flex gap-3 items-start">
                 <MapPin className="h-5 w-5 text-[#65d6e9] flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-gray-200 font-bold font-mono text-[10px] uppercase">Dirección Física:</h4>
-                  <p className="text-gray-400 mt-0.5">Av. Tres Fronteras 429, Puerto Iguazú, Misiones, Argentina</p>
-                </div>
-              </div>
-
-              <div className="flex gap-3 items-start">
-                <Phone className="h-5 w-5 text-[#65d6e9] flex-shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-gray-200 font-bold font-mono text-[10px] uppercase">Central Telefónica:</h4>
-                  <p className="text-gray-400 mt-0.5">+54 3757 420286</p>
-                </div>
-              </div>
-
-              <div className="flex gap-3 items-start">
-                <Mail className="h-5 w-5 text-[#65d6e9] flex-shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-gray-200 font-bold font-mono text-[10px] uppercase">Soporte por Email:</h4>
-                  <p className="text-gray-400 mt-0.5">reservas@transfersaeropuerto.com</p>
+                  <h4 className="text-gray-200 font-bold font-mono text-[10px] uppercase">Dirección:</h4>
+                  <p className="text-gray-400 mt-0.5">Aeropuerto Internacional IGR<br />Puerto Iguazú, Misiones.</p>
                 </div>
               </div>
 
               <div className="flex gap-3 items-start">
                 <Smartphone className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-emerald-400 font-bold font-mono text-[10px] uppercase">WhatsApp Emergencias 24h:</h4>
-                  <p className="text-gray-300 font-mono mt-0.5 font-bold">+54 9 3757 55-9112</p>
+                  <h4 className="text-emerald-400 font-bold font-mono text-[10px] uppercase">Teléfono / WhatsApp:</h4>
+                  <p className="text-gray-300 font-mono mt-0.5 font-bold">+549 3757 368041</p>
                 </div>
               </div>
 
@@ -94,10 +92,10 @@ export default function ContactPage() {
           {/* Quick WhatsApp Action Button */}
           <div className="bg-[#0a0c0d] border border-gray-800 p-4 rounded text-center">
             <p className="text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2.5">
-              ¿Consulta de último minuto?
+              ¿Consulta rápida?
             </p>
             <a 
-              href="https://wa.me/5493757559112"
+              href="https://wa.me/5493757368041"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-mono font-bold uppercase py-2 px-5 text-[10px] tracking-widest rounded-sm transition-all"

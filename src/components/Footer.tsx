@@ -13,7 +13,7 @@ export default function Footer({ onPageChange }: FooterProps) {
       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#65d6e9]/40 to-transparent"></div>
 
       {/* Brand Logo & Glowing Text */}
-      <div 
+      <div
         onClick={() => {
           onPageChange('destinos');
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -26,15 +26,15 @@ export default function Footer({ onPageChange }: FooterProps) {
 
       {/* Center Links */}
       <nav className="flex flex-wrap justify-center gap-6 text-[10px] font-mono tracking-[0.15em] uppercase">
-        <a 
-          href="#" 
+        <a
+          href="#"
           onClick={(e) => { e.preventDefault(); onPageChange('nosotros'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           className="text-gray-400 hover:text-[#65d6e9] hover:tech-glow transition-colors"
         >
           Nosotros
         </a>
-        <a 
-          href="#" 
+        <a
+          href="#"
           onClick={(e) => { e.preventDefault(); onPageChange('contacto'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           className="text-gray-400 hover:text-[#65d6e9] hover:tech-glow transition-colors"
         >
@@ -48,7 +48,7 @@ export default function Footer({ onPageChange }: FooterProps) {
 
       {/* Tech indicators */}
       <div className="text-xs font-mono text-[#65d6e9]/50 text-center md:text-right tracking-wider uppercase">
-        SYS.VER 2.0.24 // 40 AÑOS EXP
+        RBDESIGN 2.0.24 // 40 AÑOS EXP
       </div>
     </footer>
   );
