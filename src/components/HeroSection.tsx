@@ -6,6 +6,10 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ searchTerm, onSearchChange }: HeroSectionProps) {
+  const scrollToDestinations = () => {
+    document.getElementById('destinos')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative w-full h-[600px] md:h-[650px] flex items-center justify-center overflow-hidden border-b border-[#65d6e9]/20 pt-16">
 
@@ -64,12 +68,16 @@ export default function HeroSection({ searchTerm, onSearchChange }: HeroSectionP
                 type="text"
                 value={searchTerm}
                 onChange={(e) => onSearchChange(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') scrollToDestinations(); }}
                 placeholder="Escribe para buscar destinos, excursiones..."
                 className="w-full bg-transparent border-none text-white font-mono text-sm sm:text-base focus:outline-none placeholder-gray-500"
               />
             </div>
 
-            <button className="hidden sm:flex bg-[#65d6e9] text-[#0a0c0d] px-8 py-3 font-mono font-bold tracking-widest uppercase text-xs hover:shadow-[0_0_30px_rgba(101,214,233,0.8)] hover:bg-white transition-all cursor-pointer rounded-sm items-center gap-2">
+            <button
+              onClick={scrollToDestinations}
+              className="hidden sm:flex bg-[#65d6e9] text-[#0a0c0d] px-8 py-3 font-mono font-bold tracking-widest uppercase text-xs hover:shadow-[0_0_30px_rgba(101,214,233,0.8)] hover:bg-white transition-all cursor-pointer rounded-sm items-center gap-2"
+            >
               BUSCAR
             </button>
           </div>

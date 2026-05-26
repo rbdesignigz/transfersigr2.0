@@ -309,6 +309,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
       price6Pax: 70000,
       price4PaxUsd: 45,
       price6PaxUsd: 65,
+      order: destinations.length + 1,
     });
     setIsEditing(true);
   };
@@ -575,7 +576,8 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
   // REPORTING / TARIFF GENERATOR
   // -------------------------------------------------------------
   const generatePricingReport = () => {
-    const activeDestinations = destinations.filter(d => d.status === 'Activo');
+    const activeDestinations = destinations.filter(d => d.status === 'Activo')
+      .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
     const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     const now = new Date();
@@ -599,68 +601,64 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
             color: #111;
           }
           .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 15px 30px;
           }
-          /* Modern Header */
           .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 4px solid #65d6e9;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            border-bottom: 3px solid #65d6e9;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
           }
           .header-left {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 2px;
           }
           .header-left img {
-            max-height: 55px;
+            max-height: 35px;
             object-fit: contain;
           }
           .header-left .tagline {
             font-weight: 700;
             font-style: italic;
             color: #005f73;
-            font-size: 16px;
+            font-size: 11px;
           }
           .header-left .phone {
             font-weight: 900;
-            font-size: 19px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            font-size: 13px;
             color: #111;
           }
           .header-center {
             text-align: center;
             background: #005f73;
             color: white;
-            padding: 12px;
-            border-radius: 12px;
+            padding: 8px;
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
           }
           .header-center #qrcode {
             background: white;
-            padding: 6px;
-            border-radius: 6px;
-            margin-bottom: 6px;
+            padding: 4px;
+            border-radius: 4px;
+            margin-bottom: 3px;
           }
           .header-center span {
-            font-size: 11px;
+            font-size: 9px;
             font-weight: bold;
             letter-spacing: 0.5px;
           }
           .header-right {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 700;
-            line-height: 1.7;
+            line-height: 1.6;
             color: #005f73;
             text-align: right;
           }
@@ -668,36 +666,37 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            gap: 6px;
+            gap: 4px;
             color: #111;
+            font-size: 10px;
           }
           .title-banner {
             background: linear-gradient(90deg, #005f73 0%, #0a9396 100%);
             color: white;
             text-align: center;
-            padding: 16px;
-            font-size: 20px;
+            padding: 10px;
+            font-size: 16px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-bottom: 25px;
-            border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(10, 147, 150, 0.2);
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(10, 147, 150, 0.2);
           }
           table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
+            font-size: 11px;
           }
           th, td {
             border-bottom: 1px solid #e2e8f0;
-            padding: 10px 12px;
+            padding: 5px 10px;
             text-align: right;
           }
           th {
             background-color: #f8fafc;
             color: #475569;
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
             text-align: center;
             border-bottom: 2px solid #cbd5e1;
@@ -705,7 +704,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
           td:first-child, th:first-child {
             text-align: left;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 11px;
             color: #334155;
           }
           tr:nth-child(even) {
@@ -713,8 +712,8 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
           }
           .controls {
             text-align: center;
-            margin-bottom: 20px;
-            padding: 20px;
+            margin-bottom: 10px;
+            padding: 12px;
             background: #f1f5f9;
             border-bottom: 1px solid #e2e8f0;
           }
@@ -722,12 +721,12 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
             background: #0ea5e9;
             color: white;
             border: none;
-            padding: 12px 24px;
-            font-size: 14px;
+            padding: 10px 20px;
+            font-size: 13px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
-            margin: 0 10px;
+            margin: 0 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: all 0.2s;
           }
@@ -737,7 +736,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
           }
           @media print {
             body { margin: 0; background: white; }
-            .container { padding: 10px; max-width: 100%; }
+            .container { padding: 10px 20px; max-width: 100%; }
             .controls { display: none; }
             .title-banner { 
               background: #005f73 !important;
@@ -749,13 +748,18 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
               -webkit-print-color-adjust: exact;
               print-color-adjust: exact;
             }
+            tr:nth-child(even) {
+              background-color: #f8fafc !important;
+              -webkit-print-color-adjust: exact;
+              print-color-adjust: exact;
+            }
           }
         </style>
       </head>
       <body>
         <div class="controls">
-          <button onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
-          <button onclick="shareLink()" style="background: #10b981;">📲 Compartir Enlace Web</button>
+          <button onclick="window.print()">Imprimir / Guardar PDF</button>
+          <button onclick="shareLink()" style="background: #10b981;">Compartir Enlace Web</button>
         </div>
         
         <div class="container">
@@ -763,7 +767,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
             <div class="header-left">
               <img src="/logo.png" alt="Transfers Aeropuerto" onerror="this.style.display='none'" />
               <div class="tagline">40 años de experiencia</div>
-              <div class="phone">📞 +54 9 3757 368041</div>
+              <div class="phone">+54 9 3757 368041</div>
             </div>
             
             <div class="header-center">
@@ -772,15 +776,15 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
             </div>
             
             <div class="header-right">
-              <div style="color: #005f73; margin-bottom: 5px;">Seguinos en nuestras Redes</div>
-              <div class="social-item">📷 @transfersaeropuerto</div>
-              <div class="social-item">📘 Transfer Aeropuerto</div>
-              <div class="social-item">🎵 transfers.aero</div>
+              <div style="color: #005f73; margin-bottom: 3px; font-size: 10px;">Seguinos en nuestras Redes</div>
+              <div class="social-item">@transfersaeropuerto</div>
+              <div class="social-item">Transfer Aeropuerto</div>
+              <div class="social-item">transfers.aero</div>
             </div>
           </div>
 
           <div class="title-banner">
-            TARIFARIO DESDE ${month.toUpperCase()} ${year}
+            TARIFARIO ${month.toUpperCase()} ${year}
           </div>
 
           <table>
@@ -789,8 +793,6 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                 <th>DESTINO / SERVICIO</th>
                 <th>HASTA 4 PAX (ARS)</th>
                 <th>HASTA 6 PAX (ARS)</th>
-                <th>HASTA 4 PAX (USD)</th>
-                <th>HASTA 6 PAX (USD)</th>
               </tr>
             </thead>
             <tbody>
@@ -799,8 +801,6 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                   <td>${d.title}</td>
                   <td>$ ${d.price4Pax.toLocaleString()}</td>
                   <td>$ ${d.price6Pax.toLocaleString()}</td>
-                  <td>$ ${d.price4PaxUsd}</td>
-                  <td>$ ${d.price6PaxUsd}</td>
                 </tr>
               `).join('')}
             </tbody>
@@ -808,12 +808,11 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
         </div>
         
         <script>
-          // Build QR code visually
           try {
             var qr = qrcode(4, 'L');
             qr.addData('https://www.transfersigr.com');
             qr.make();
-            document.getElementById('qrcode').innerHTML = qr.createImgTag(3, 0);
+            document.getElementById('qrcode').innerHTML = qr.createImgTag(2, 0);
           } catch(e) { console.error('QR Error', e); }
 
           function shareLink() {
@@ -935,24 +934,6 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                   </button>
 
                   <button
-                    onClick={handleResetToDefaults}
-                    type="button"
-                    className="bg-transparent border border-gray-800 text-gray-400 font-mono text-[9px] hover:text-red-400 hover:border-red-500/20 px-3.5 py-2 rounded hover:bg-gray-900 transition-all cursor-pointer uppercase tracking-widest"
-                  >
-                    Fábrica
-                  </button>
-
-                  <button
-                    onClick={onRefresh}
-                    type="button"
-                    className="bg-transparent border border-gray-800 text-gray-300 font-mono text-[9px] hover:border-[#65d6e9]/30 hover:text-[#65d6e9] px-3.5 py-2 rounded transition-all cursor-pointer flex items-center gap-1.5 uppercase tracking-widest"
-                    title="Actualizar del servidor"
-                  >
-                    <RefreshCw className="h-3 w-3" />
-                    Re-Sync
-                  </button>
-
-                  <button
                     onClick={handleAddNew}
                     type="button"
                     className="bg-[#65d6e9] text-[#0a0c0d] font-mono text-[9px] font-bold uppercase px-4 py-2 rounded hover:bg-white transition-all cursor-pointer flex items-center gap-1.5 shadow-[0_0_15px_rgba(101,214,233,0.3)] tracking-widest ml-auto"
@@ -989,10 +970,10 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6 text-left">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-4 gap-5">
 
                       {/* Card Title */}
-                      <div>
+                      <div className="sm:col-span-2">
                         <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
                           Título del destino *
                         </label>
@@ -1037,6 +1018,21 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                           <option value="Activo">Activo (Visible en portada)</option>
                           <option value="Inactivo">Inactivo (Inhabilitado / Oculto)</option>
                         </select>
+                      </div>
+
+                      {/* Order field */}
+                      <div>
+                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                          Orden de aparición
+                        </label>
+                        <input
+                          type="number"
+                          min={1}
+                          className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 font-mono text-xs text-white text-center focus:outline-none"
+                          placeholder="1"
+                          value={activeDest.order ?? ''}
+                          onChange={(e) => handleChange('order', Number(e.target.value))}
+                        />
                       </div>
 
                     </div>
@@ -1237,6 +1233,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                       <thead>
                         <tr className="bg-[#0a0c0d] text-gray-500 uppercase text-[9px] tracking-widest border-b border-gray-800">
                           <th className="p-4 text-left">ACCIONES</th>
+                          <th className="p-4">ORDEN</th>
                           <th className="p-4">IMAGEN</th>
                           <th className="p-4">TÍTULO / DESTINO</th>
                           <th className="p-4">PAÍS / FILTRO</th>
@@ -1246,30 +1243,35 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-800">
-                        {destinations.map((dest) => (
+                        {[...destinations].sort((a, b) => (a.order ?? 999) - (b.order ?? 999)).map((dest) => (
                           <tr key={dest.id} className="hover:bg-[#111415]/50 transition-colors">
 
                             {/* Actions Column (pencil and bin only - labels are hidden on mobile) */}
                             <td className="p-4 text-left">
-                              <div className="flex gap-2 justify-start items-center">
+                              <div className="flex gap-1.5 justify-start items-center">
                                 <button
                                   onClick={() => handleEdit(dest)}
-                                  className="p-2 sm:px-3 border border-gray-800 text-gray-300 hover:text-[#65d6e9] hover:border-[#65d6e9]/40 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer bg-gray-900/40"
+                                  className="p-2 border border-gray-800 text-gray-300 hover:text-[#65d6e9] hover:border-[#65d6e9]/40 rounded-lg transition-all cursor-pointer bg-gray-900/40"
                                   title="Modificar destino"
                                 >
                                   <Edit className="h-3.5 w-3.5" />
-                                  <span className="hidden sm:inline text-[9px] uppercase tracking-wider font-bold">Editar</span>
                                 </button>
 
                                 <button
                                   onClick={() => handleDelete(dest.id)}
-                                  className="p-2 sm:px-3 border border-transparent text-gray-500 hover:text-red-400 hover:border-red-500/25 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer"
+                                  className="p-2 border border-transparent text-gray-500 hover:text-red-400 hover:border-red-500/25 rounded-lg transition-all cursor-pointer"
                                   title="Eliminar tarjeta"
                                 >
                                   <Trash2 className="h-3.5 w-3.5" />
-                                  <span className="hidden sm:inline text-[9px] uppercase tracking-wider font-bold">Borrar</span>
                                 </button>
                               </div>
+                            </td>
+
+                            {/* Order number */}
+                            <td className="p-4 text-center">
+                              <span className="text-white font-mono text-xs font-bold bg-[#65d6e9]/10 border border-[#65d6e9]/20 px-2 py-0.5 rounded">
+                                {dest.order ?? '—'}
+                              </span>
                             </td>
 
                             {/* Visual Tiny Image preview */}

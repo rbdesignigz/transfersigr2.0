@@ -10,6 +10,7 @@ export interface Destination {
   price6Pax: number;
   price4PaxUsd: number;
   price6PaxUsd: number;
+  order?: number;
 }
 
 export interface Excursion {

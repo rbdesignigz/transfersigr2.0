@@ -12,14 +12,15 @@ export default function DestinationsList({ destinations, onSelectDestination, lo
   const [filterCode, setFilterCode] = useState<'ALL' | 'AR' | 'BR' | 'PY'>('ALL');
 
   // Filter only 'Activo' status destinations for visitors, then filter by country code
-  const activeDestinations = destinations.filter(d => d.status === 'Activo');
+  const activeDestinations = destinations.filter(d => d.status === 'Activo')
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
   const filteredDestinations = filterCode === 'ALL' 
     ? activeDestinations 
     : activeDestinations.filter(d => d.code === filterCode);
 
   return (
-    <section className="py-16 px-6 max-w-7xl mx-auto relative">
+    <section id="destinos" className="py-16 px-6 max-w-7xl mx-auto relative">
       {/* Absolute tech side glow indicator */}
       <div className="absolute left-0 top-1/2 w-[1px] h-2/3 bg-gradient-to-b from-transparent via-[#65d6e9]/20 to-transparent -translate-y-1/2"></div>
 
