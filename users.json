@@ -1,0 +1,23 @@
+[
+  {
+    "id": "u-1",
+    "username": "admin",
+    "password": "JoIri00",
+    "role": "admin",
+    "fullName": "Pablo Berni"
+  },
+  {
+    "id": "u-2",
+    "username": "operador",
+    "password": "LSaucedo",
+    "role": "usuario",
+    "fullName": "Ludmila"
+  },
+  {
+    "id": "user-44856",
+    "username": "aetchepare",
+    "password": "Ale4455",
+    "role": "usuario",
+    "fullName": "Alejandro Etchepare"
+  }
+]

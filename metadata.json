@@ -1,0 +1,6 @@
+{
+  "name": "Transfers Aeropuerto",
+  "description": "Servicio premium de traslados y excursiones en la Triple Frontera (Argentina, Brasil y Paraguay). Reserve traslados de aeropuertos, paseos a las Cataratas del Iguazú y más con un diseño técnico y tecnológico de noche.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

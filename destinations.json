@@ -1,0 +1,54 @@
+[
+  {
+    "id": "arg",
+    "title": "Argentina",
+    "country": "Argentina",
+    "code": "AR",
+    "status": "Activo",
+    "description": "Visite las majestuosas cataratas del lado argentino con su famosa pasarela a la Garganta del Diablo. Disfrute de la exquisita gastronomía local, espectáculos de tango y hotelería inmersa en la selva subtropical misionera.",
+    "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuC7wy_6scgevLaxwTBCCwhbIgpZAgsrlVn5EjCNC5OIpsY1vRRstHwaiued_KHl6QK3Ev07FtrhQ2kSJKKtMlc3T1MRjhuGth8aKiKk5B4e9kLw-24J9IoZUYzb-0IkFUJVrpNmYCnUFvryNYfjlwL9FGvbzqiYaixYGIp94v62w4c-2A0kAMNVK02LTJKrg6lhEO7rQ5I4Z9E2m8gttEzBzGEhT1dLPOptR8wHoxZS3kdnHyxGp0WHwA9uDQ123g-pBdbsyVDMjtTI",
+    "price4Pax": 50000,
+    "price6Pax": 70000,
+    "price4PaxUsd": 45,
+    "price6PaxUsd": 65
+  },
+  {
+    "id": "bra",
+    "title": "Brasil",
+    "country": "Brasil",
+    "code": "BR",
+    "status": "Activo",
+    "description": "Explore las cataratas del lado brasilero que ofrece la vista panorámica más espectacular e imponente de los saltos. Complete su experiencia visitando el fascinante Parque de las Aves y disfrutando de un tradicional rodizio de carnes.",
+    "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuAqhXKn-9SQezi472rx7V_H8TKFOybFSBYI91bZogHEu4U7F9oYcv9uUBIZUtaly6kV4WnPp1U0kbc_TslnReyYXUn_43DUgQ8e9b52O2vTsqC1gwv6v-CGSSidfmWMn23Z89EPIx4Voes6GvFzksGLcAi4IXvIy2ioWdRGhT1PSzcH-XrUOojYacUnkCt9n2AnA6nEBzNZbwxIe91FAo69d8j6UF187sP7soGPd9ao1AsFYvMcXxSt1UeJvOHmNbUpdxT3wzyobopq",
+    "price4Pax": 50000,
+    "price6Pax": 70000,
+    "price4PaxUsd": 45,
+    "price6PaxUsd": 65
+  },
+  {
+    "id": "par",
+    "title": "Paraguay",
+    "country": "Paraguay",
+    "code": "PY",
+    "status": "Activo",
+    "description": "Visite el centro de compras libre de impuestos más grande de Sudamérica en Ciudad del Este. Descubra la imponente ingeniería de la Represa de Itaipú, su rica artesanía en filigrana, y la calidez de su cultura bilingüe español-guaraní.",
+    "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuAvEcKISmAd3mxlglQB-jg2HwXm_t_VY1utGm27tESL3-PVFPN68lSqjLj9LCJ2jz_RiVuTF_TaOFoVjJ0tTaDwwrg_KZbznn6dDk5iL_whetkQdVuzcDsMkGlRkpAPK5nshBFta8mnFwstMvAzVy7oyNvEMQrR0Ojcx3-FWVsYabMEvI8z5ohcsjaCw-zdfGMTeY_sy-Im3fpwukpeJlrIASJTr4ZAx_baU7u7rn0LtE1Q3o-4sP2N1W1E27p4MgrNaft_7TNRh4Rc",
+    "price4Pax": 50000,
+    "price6Pax": 70000,
+    "price4PaxUsd": 45,
+    "price6PaxUsd": 65
+  },
+  {
+    "id": "dest-266994",
+    "title": "Ituzaingó",
+    "country": "Brasil",
+    "code": "BR",
+    "status": "Activo",
+    "description": "Viajemos a Ituzaingó",
+    "imageUrl": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80",
+    "price4Pax": 50000,
+    "price6Pax": 70000,
+    "price4PaxUsd": 45,
+    "price6PaxUsd": 65
+  }
+]
