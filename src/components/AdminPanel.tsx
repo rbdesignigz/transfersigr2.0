@@ -23,7 +23,9 @@ import {
   KeyRound,
   Mail,
   UploadCloud,
-  Printer
+  Printer,
+  Eye,
+  EyeOff
 } from 'lucide-react';
 
 interface AdminPanelProps {
@@ -36,6 +38,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [usernameInput, setUsernameInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
+  const [showLoginPassword, setShowLoginPassword] = useState<boolean>(false);
   const [authError, setAuthError] = useState<string>('');
 
   // Tab switcher inside Admin Workspace: 'destinations' | 'users' | 'messages'
@@ -546,14 +549,24 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                 <label className="text-[8px] font-mono text-[var(--text-muted)] uppercase tracking-widest">
                   Contraseña Autorizada:
                 </label>
-                <input
-                  type="password"
-                  required
-                  className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] p-3 text-[var(--text-main)] text-center font-mono text-xs rounded focus:outline-none"
-                  placeholder="Tu contraseña secreta"
-                  value={passwordInput}
-                  onChange={(e) => setPasswordInput(e.target.value)}
-                />
+                <div className="relative">
+                  <input
+                    type={showLoginPassword ? "text" : "password"}
+                    required
+                    className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] p-3 text-[var(--text-main)] text-center font-mono text-xs rounded focus:outline-none"
+                    placeholder="Tu contraseña secreta"
+                    value={passwordInput}
+                    onChange={(e) => setPasswordInput(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowLoginPassword(!showLoginPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[var(--color-primary-base)] transition-colors cursor-pointer"
+                    title={showLoginPassword ? "Ocultar contraseña" : "Ver contraseña"}
+                  >
+                    {showLoginPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
               </div>
             </div>
 
