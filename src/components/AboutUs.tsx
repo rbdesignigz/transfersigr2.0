@@ -1,6 +1,7 @@
 import { Shield, Sparkles, Award, Map, CheckCircle2, History, Users2 } from 'lucide-react';
 
 export default function AboutUs() {
+  const values = [
     {
       icon: <Award className="h-6 w-6 text-[var(--color-primary-base)]" />,
       title: '40 años de trayectoria operativa',
