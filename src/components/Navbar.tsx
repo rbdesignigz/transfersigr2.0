@@ -1,13 +1,15 @@
-import { PlaneTakeoff, Menu, X } from 'lucide-react';
+import { PlaneTakeoff, Menu, X, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 
 interface NavbarProps {
   currentPage: string;
   onPageChange: (page: string) => void;
   onOpenBooking: () => void;
+  isDarkMode: boolean;
+  toggleTheme: () => void;
 }
 
-export default function Navbar({ currentPage, onPageChange, onOpenBooking }: NavbarProps) {
+export default function Navbar({ currentPage, onPageChange, onOpenBooking, isDarkMode, toggleTheme }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -25,7 +27,7 @@ export default function Navbar({ currentPage, onPageChange, onOpenBooking }: Nav
   };
 
   return (
-    <header className="bg-[#0a0c0d]/95 backdrop-blur-xl border-b border-[#65d6e9]/20 shadow-[0_4px_30px_rgba(101,214,233,0.05)] fixed top-0 left-0 w-full z-50 transition-all">
+    <header className="bg-[var(--bg-app)]/95 backdrop-blur-xl border-b border-[var(--border-tech)] shadow-md fixed top-0 left-0 w-full z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4 flex justify-between items-center">
 
         {/* Brand Logo Image */}
@@ -59,10 +61,19 @@ export default function Navbar({ currentPage, onPageChange, onOpenBooking }: Nav
           })}
         </nav>
 
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          className="text-[var(--color-primary-base)] p-2 hover:bg-[var(--color-primary-base)]/15 rounded-full transition-all ml-auto md:ml-0 md:mr-0 mr-4"
+          title={isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+        >
+          {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+        </button>
+
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-[#65d6e9] p-2 border border-[#65d6e9]/30 rounded-sm hover:bg-[#65d6e9]/15 transition-all ml-auto"
+          className="md:hidden text-[var(--color-primary-base)] p-2 border border-[var(--color-primary-base)]/30 rounded-sm hover:bg-[var(--color-primary-base)]/15 transition-all"
           aria-label="Toggle Navigation Menu"
         >
           {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -71,7 +82,7 @@ export default function Navbar({ currentPage, onPageChange, onOpenBooking }: Nav
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0c0f10] border-b border-[#65d6e9]/20 font-mono text-center py-6 px-4 absolute w-full left-0 transition-all z-40 shadow-2xl">
+        <div className="md:hidden bg-[var(--bg-app)] border-b border-[var(--border-tech)] font-mono text-center py-6 px-4 absolute w-full left-0 transition-all z-40 shadow-2xl">
           <div className="flex flex-col gap-5 uppercase tracking-widest text-sm">
             {navItems.map((item) => {
               const isActive = currentPage === item.id;

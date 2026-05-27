@@ -73,26 +73,26 @@ export default function BookingModal({
       {/* Dark overlay backdrop with blur */}
       <div 
         onClick={onClose}
-        className="fixed inset-0 bg-[#0a0c0d]/90 backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-[var(--bg-app)]/90 backdrop-blur-md transition-opacity"
       ></div>
 
       {/* Main Dialog Container */}
-      <div className="relative bg-[#0c0f10] border border-[#65d6e9]/40 w-full max-w-2xl rounded-xl shadow-[0_0_50px_rgba(101,214,233,0.25)] overflow-hidden z-10 font-sans max-h-[90vh] flex flex-col">
+      <div className="relative bg-[var(--bg-app)] border border-[var(--color-primary-base)]/40 w-full max-w-2xl rounded-xl shadow-[0_0_50px_rgba(101,214,233,0.25)] overflow-hidden z-10 font-sans max-h-[90vh] flex flex-col">
         
         {/* Header decoration */}
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#65d6e9] via-transparent to-[#65d6e9]"></div>
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-[var(--color-primary-base)] via-transparent to-[var(--color-primary-base)]"></div>
         
         {/* Modal Top Bar */}
-        <div className="p-5 border-b border-gray-800 flex justify-between items-center bg-[#0f1214] flex-shrink-0">
+        <div className="p-5 border-b border-[var(--border-tech)] flex justify-between items-center bg-[var(--bg-card)] flex-shrink-0">
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#65d6e9] animate-pulse"></span>
-            <span className="text-sm font-mono text-[#65d6e9] uppercase tracking-widest font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary-base)] animate-pulse"></span>
+            <span className="text-sm font-mono text-[var(--color-primary-base)] uppercase tracking-widest font-bold">
               {success ? 'RESERVA COMPLETADA EXITOSAMENTE' : 'SISTEMA DE RESERVAS DIRECTAS'}
             </span>
           </div>
           <button 
             onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors cursor-pointer p-1"
+            className="text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer p-1"
             aria-label="Close booking system dialog"
           >
             <X className="h-5 w-5" />
@@ -112,33 +112,33 @@ export default function BookingModal({
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-2xl font-display font-extrabold text-white uppercase tracking-tight">
+                <h3 className="text-2xl font-display font-extrabold text-[var(--text-main)] uppercase tracking-tight">
                   ¡OPERACIÓN CONFIRMADA!
                 </h3>
-                <p className="text-gray-400 text-xs font-mono uppercase tracking-wider max-w-md mx-auto">
+                <p className="text-[var(--text-muted)] text-xs font-mono uppercase tracking-wider max-w-md mx-auto">
                   Su solicitud ha sido grabada. Un coordinador de Transfers Aeropuerto se contactará por WhatsApp para detallar los datos del conductor asignado.
                 </p>
               </div>
 
               {/* Virtual Receipt Table */}
-              <div className="bg-[#0f1214] border border-green-500/30 rounded-lg p-5 text-left font-mono text-xs max-w-md mx-auto relative overflow-hidden space-y-4">
+              <div className="bg-[var(--bg-card)] border border-green-500/30 rounded-lg p-5 text-left font-mono text-xs max-w-md mx-auto relative overflow-hidden space-y-4">
                 <div className="absolute top-0 right-[-15px] bg-green-500/20 text-green-400 font-bold px-5 py-1 text-[8px] tracking-widest uppercase rotate-45">
                   CONFIRMADO
                 </div>
 
-                <div className="border-b border-gray-800 pb-2 text-center text-gray-500 font-bold pb-2">
+                <div className="border-b border-[var(--border-tech)] pb-2 text-center text-gray-500 font-bold">
                   🛩️ VOUCHER DE TRANSFERS AEROPUERTO
                 </div>
 
                 <div className="grid grid-cols-2 gap-y-2 text-gray-300">
                   <span className="text-gray-500">CÓDIGO DE RESERVA:</span>
-                  <span className="text-right text-[#65d6e9] font-bold">{bookingRefId}</span>
+                  <span className="text-right text-[var(--color-primary-base)] font-bold">{bookingRefId}</span>
 
                   <span className="text-gray-500 font-light">PASAJERO TITULAR:</span>
-                  <span className="text-right text-white truncate">{fullName}</span>
+                  <span className="text-right text-[var(--text-main)] truncate">{fullName}</span>
 
                   <span className="text-gray-500 font-light">MÓVIL ASOCIADO:</span>
-                  <span className="text-right text-white">{phone}</span>
+                  <span className="text-right text-[var(--text-main)]">{phone}</span>
 
                   <span className="text-gray-500 font-light">Ruta del Viaje:</span>
                   <span className="text-right text-gray-300 text-[11px] truncate" title={`${selectedOriginObj?.name} → ${selectedDestObj?.name}`}>
@@ -146,28 +146,28 @@ export default function BookingModal({
                   </span>
 
                   <span className="text-gray-500 font-light">FECHA Y HORA:</span>
-                  <span className="text-right text-white">{date} - {time} HS</span>
+                  <span className="text-right text-[var(--text-main)]">{date} - {time} HS</span>
 
                   <span className="text-gray-500 font-light">CAPACIDAD CONTRATADA:</span>
-                  <span className="text-right text-white font-semibold">{passengers} PASAJEROS ({passengers <= 4 ? 'AUTO PRIVADO' : 'EXECUTIVE VAN'})</span>
+                  <span className="text-right text-[var(--text-main)] font-semibold">{passengers} PASAJEROS ({passengers <= 4 ? 'AUTO PRIVADO' : 'EXECUTIVE VAN'})</span>
 
                   {flightNumber && (
                     <>
                       <span className="text-gray-500 font-light">NÚMERO DE VUELO:</span>
-                      <span className="text-right text-[#65d6e9]">{flightNumber.toUpperCase()}</span>
+                      <span className="text-right text-[var(--color-primary-base)]">{flightNumber.toUpperCase()}</span>
                     </>
                   )}
                 </div>
 
-                <div className="border-t border-gray-800 pt-3 flex justify-between font-bold text-sm">
-                  <span className="text-gray-400">MONTO TOTAL A ABONAR:</span>
+                <div className="border-t border-[var(--border-tech)] pt-3 flex justify-between font-bold text-sm">
+                  <span className="text-[var(--text-muted)]">MONTO TOTAL A ABONAR:</span>
                   <div className="text-right">
-                    <div className="text-white">ARS ${priceData.ars.toLocaleString()}</div>
-                    <div className="text-[#65d6e9] text-xs">USD ${priceData.usd}</div>
+                    <div className="text-[var(--text-main)]">ARS ${priceData.ars.toLocaleString()}</div>
+                    <div className="text-[var(--color-primary-base)] text-xs">USD ${priceData.usd}</div>
                   </div>
                 </div>
 
-                <div className="bg-[#111415] border border-gray-800 p-2.5 text-[10px] text-gray-500 font-sans tracking-tight text-center">
+                <div className="bg-[var(--bg-input)] border border-[var(--border-tech)] p-2.5 text-[10px] text-gray-500 font-sans tracking-tight text-center">
                   ⚠️ No se requiere pago adelantado por tarjeta de crédito. Abonará el costo directamente al chofer en efectivo al iniciar/finalizar el traslado en ARS, USD, BRL (efectivo, Pix o transferencia bancaria local).
                 </div>
               </div>
@@ -175,7 +175,7 @@ export default function BookingModal({
               <div className="pt-4 flex gap-4 justify-center">
                 <button
                   onClick={onClose}
-                  className="bg-[#65d6e9] text-[#0a0c0d] font-mono font-bold uppercase py-2.5 px-8 text-xs tracking-widest hover:bg-white hover:shadow-[0_0_20px_rgba(101,214,233,0.3)] transition-all cursor-pointer"
+                  className="bg-[var(--color-primary-base)] text-[var(--bg-app)] font-mono font-bold uppercase py-2.5 px-8 text-xs tracking-widest hover:bg-[var(--text-main)] hover:shadow-[0_0_20px_rgba(101,214,233,0.3)] transition-all cursor-pointer"
                 >
                   Entendido / Volver
                 </button>
@@ -196,15 +196,15 @@ export default function BookingModal({
                 
                 {/* Full Name */}
                 <div>
-                  <label className="block text-gray-400 font-mono text-[10px] uppercase tracking-widest mb-1 select-none">
+                  <label className="block text-[var(--text-muted)] font-mono text-[10px] uppercase tracking-widest mb-1 select-none">
                     Nombre del Pasajero Titular *
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#65d6e9] opacity-75" />
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--color-primary-base)] opacity-75" />
                     <input
                       required
                       type="text"
-                      className="w-full bg-[#111415] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 pl-10 text-white font-sans text-sm focus:outline-none focus:ring-1 focus:ring-[#65d6e9]/20"
+                      className="w-full bg-[var(--bg-input)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 pl-10 text-[var(--text-main)] font-sans text-sm focus:outline-none focus:ring-1 focus:ring-[var(--color-primary-base)]/20"
                       placeholder="Ej. Juan Pérez"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
@@ -214,15 +214,15 @@ export default function BookingModal({
 
                 {/* Email Address */}
                 <div>
-                  <label className="block text-gray-400 font-mono text-[10px] uppercase tracking-widest mb-1 select-none">
+                  <label className="block text-[var(--text-muted)] font-mono text-[10px] uppercase tracking-widest mb-1 select-none">
                     Dirección de Email *
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#65d6e9] opacity-75" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--color-primary-base)] opacity-75" />
                     <input
                       required
                       type="email"
-                      className="w-full bg-[#111415] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 pl-10 text-white font-sans text-sm focus:outline-none focus:ring-1 focus:ring-[#65d6e9]/20"
+                      className="w-full bg-[var(--bg-input)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 pl-10 text-[var(--text-main)] font-sans text-sm focus:outline-none focus:ring-1 focus:ring-[var(--color-primary-base)]/20"
                       placeholder="juan.perez@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -232,15 +232,15 @@ export default function BookingModal({
 
                 {/* Mobile Whatsapp */}
                 <div>
-                  <label className="block text-gray-400 font-mono text-[10px] uppercase tracking-widest mb-1 select-none">
+                  <label className="block text-[var(--text-muted)] font-mono text-[10px] uppercase tracking-widest mb-1 select-none">
                     Teléfono Móvil (WhatsApp) *
                   </label>
                   <div className="relative">
-                    <Smartphone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#65d6e9] opacity-75" />
+                    <Smartphone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--color-primary-base)] opacity-75" />
                     <input
                       required
                       type="tel"
-                      className="w-full bg-[#111415] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 pl-10 text-white font-sans text-sm focus:outline-none focus:ring-1 focus:ring-[#65d6e9]/20"
+                      className="w-full bg-[var(--bg-input)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 pl-10 text-[var(--text-main)] font-sans text-sm focus:outline-none focus:ring-1 focus:ring-[var(--color-primary-base)]/20"
                       placeholder="Ej. +54 9 11 1234-5678"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
@@ -250,15 +250,15 @@ export default function BookingModal({
 
                 {/* Vehicle or Route Flight Number */}
                 <div>
-                  <label className="block text-gray-400 font-mono text-[10px] uppercase tracking-widest mb-1 select-none flex justify-between">
+                  <label className="block text-[var(--text-muted)] font-mono text-[10px] uppercase tracking-widest mb-1 select-none flex justify-between">
                     <span>Número de Vuelo (Opcional)</span>
-                    <span className="text-[#65d6e9]/60 text-[9px] lowercase font-normal">para seguimiento en vivo</span>
+                    <span className="text-[var(--color-primary-base)]/60 text-[9px] lowercase font-normal">para seguimiento en vivo</span>
                   </label>
                   <div className="relative">
-                    <Plane className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#65d6e9] opacity-75" />
+                    <Plane className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--color-primary-base)] opacity-75" />
                     <input
                       type="text"
-                      className="w-full bg-[#111415] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 pl-10 text-white font-mono text-sm uppercase focus:outline-none focus:ring-1 focus:ring-[#65d6e9]/20 placeholder-gray-600"
+                      className="w-full bg-[var(--bg-input)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 pl-10 text-[var(--text-main)] font-mono text-sm uppercase focus:outline-none focus:ring-1 focus:ring-[var(--color-primary-base)]/20 placeholder-gray-600"
                       placeholder="Ej. AR1732 o G3 1145"
                       value={flightNumber}
                       onChange={(e) => setFlightNumber(e.target.value)}
@@ -269,8 +269,8 @@ export default function BookingModal({
               </div>
 
               {/* Dynamic Quote Selection controls */}
-              <div className="bg-[#0f1214] border border-gray-800 p-4 rounded-lg space-y-4">
-                <div className="text-[#65d6e9] font-mono text-[10px] tracking-wider uppercase font-semibold">
+              <div className="bg-[var(--bg-card)] border border-[var(--border-tech)] p-4 rounded-lg space-y-4">
+                <div className="text-[var(--color-primary-base)] font-mono text-[10px] tracking-wider uppercase font-semibold">
                   📌 RUTA Y TRAYECTO CONTRATADO
                 </div>
 
@@ -282,7 +282,7 @@ export default function BookingModal({
                     <select
                       value={originId}
                       onChange={(e) => setOriginId(e.target.value)}
-                      className="w-full bg-[#0a0c0d] border border-[#65d6e9]/15 text-white p-2.5 rounded font-mono text-[11px] focus:outline-none focus:border-[#65d6e9]"
+                      className="w-full bg-[var(--bg-app)] border border-[var(--color-primary-base)]/15 text-[var(--text-main)] p-2.5 rounded font-mono text-[11px] focus:outline-none focus:border-[var(--color-primary-base)]"
                     >
                       {LOCATIONS_DATA.map(l => (
                         <option key={l.id} value={l.id}>[{l.country}] {l.name}</option>
@@ -297,7 +297,7 @@ export default function BookingModal({
                     <select
                       value={destId}
                       onChange={(e) => setDestId(e.target.value)}
-                      className="w-full bg-[#0a0c0d] border border-[#65d6e9]/15 text-white p-2.5 rounded font-mono text-[11px] focus:outline-none focus:border-[#65d6e9]"
+                      className="w-full bg-[var(--bg-app)] border border-[var(--color-primary-base)]/15 text-[var(--text-main)] p-2.5 rounded font-mono text-[11px] focus:outline-none focus:border-[var(--color-primary-base)]"
                     >
                       {LOCATIONS_DATA.map(l => (
                         <option key={l.id} value={l.id}>[{l.country}] {l.name}</option>
@@ -314,7 +314,7 @@ export default function BookingModal({
                     <input
                       required
                       type="date"
-                      className="w-full bg-[#0a0c0d] border border-gray-800 text-white p-2 rounded font-mono text-xs focus:outline-none focus:border-[#65d6e9]"
+                      className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] text-[var(--text-main)] p-2 rounded font-mono text-xs focus:outline-none focus:border-[var(--color-primary-base)]"
                       value={date}
                       onChange={(e) => setDate(e.target.value)}
                     />
@@ -327,7 +327,7 @@ export default function BookingModal({
                     <input
                       required
                       type="time"
-                      className="w-full bg-[#0a0c0d] border border-gray-800 text-white p-2 rounded font-mono text-xs focus:outline-none focus:border-[#65d6e9]"
+                      className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] text-[var(--text-main)] p-2 rounded font-mono text-xs focus:outline-none focus:border-[var(--color-primary-base)]"
                       value={time}
                       onChange={(e) => setTime(e.target.value)}
                     />
@@ -345,7 +345,7 @@ export default function BookingModal({
                         if (count > 4) setVehicle('van');
                         else setVehicle('car');
                       }}
-                      className="w-full bg-[#0a0c0d] border border-gray-800 text-white p-2 rounded font-mono text-xs focus:outline-none focus:border-[#65d6e9]"
+                      className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] text-[var(--text-main)] p-2 rounded font-mono text-xs focus:outline-none focus:border-[var(--color-primary-base)]"
                     >
                       {[1, 2, 3, 4, 5, 6].map(num => (
                         <option key={num} value={num}>{num} {num === 1 ? 'Pasajero' : 'Pasajeros'}</option>
@@ -357,11 +357,11 @@ export default function BookingModal({
 
               {/* Special Note Input */}
               <div>
-                <label className="block text-gray-400 font-mono text-[10px] uppercase tracking-widest mb-1 select-none">
+                <label className="block text-[var(--text-muted)] font-mono text-[10px] uppercase tracking-widest mb-1 select-none">
                   Comentarios / Necesidades Especiales (Opcional)
                 </label>
                 <textarea
-                  className="w-full bg-[#111415] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 text-white font-sans text-xs focus:outline-none focus:ring-1 focus:ring-[#65d6e9]/20"
+                  className="w-full bg-[var(--bg-input)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 text-[var(--text-main)] font-sans text-xs focus:outline-none focus:ring-1 focus:ring-[var(--color-primary-base)]/20"
                   rows={2}
                   placeholder="Ej. Necesitamos silla porta-bebé, equipaje sobredimensionado, paradas intermedias, etc."
                   value={notes}
@@ -371,20 +371,20 @@ export default function BookingModal({
 
               {/* Dynamic Live Quote Section */}
               {originId !== destId && (
-                <div className="bg-[#111415] border border-[#65d6e9]/20 p-4 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-3">
+                <div className="bg-[var(--bg-input)] border border-[var(--color-primary-base)]/20 p-4 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-3">
                   <div className="text-center sm:text-left">
-                    <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest block">
+                    <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-widest block">
                       TOTAL ESTIMADO A ABONAR AL CHOFER
                     </span>
-                    <span className="text-gray-400 font-sans text-xs">
+                    <span className="text-[var(--text-muted)] font-sans text-xs">
                       Vehículo: {passengers <= 4 ? 'AUTO PRIVADO SEDÁN' : 'MINIVAN FAMILIAR EXCLUSIVA'}
                     </span>
                   </div>
                   <div className="text-center sm:text-right font-mono">
-                    <span className="text-lg md:text-xl font-bold text-white block">
+                    <span className="text-lg md:text-xl font-bold text-[var(--text-main)] block">
                       ARS ${priceData.ars.toLocaleString()}
                     </span>
-                    <span className="text-[#65d6e9] text-xs font-semibold">
+                    <span className="text-[var(--color-primary-base)] text-xs font-semibold">
                       USD ${priceData.usd} neto
                     </span>
                   </div>
@@ -392,19 +392,19 @@ export default function BookingModal({
               )}
 
               {/* Legal Notice */}
-              <div className="flex gap-2 items-start text-[10px] text-gray-500 bg-gray-950 p-3 rounded">
-                <Info className="h-4 w-4 text-[#65d6e9] flex-shrink-0 mt-0.5" />
+              <div className="flex gap-2 items-start text-[10px] text-[var(--text-muted)] bg-[var(--bg-input)] p-3 rounded">
+                <Info className="h-4 w-4 text-[var(--color-primary-base)] flex-shrink-0 mt-0.5" />
                 <p>
                   Política de cancelación flexible: Puede cancelar o reprogramar sin cargo avisando por WhatsApp hasta 4 horas antes. Su reserva incluye seguro de accidentes civiles y gestión exprés de migraciones en la frontera con choferes profesionales certificados.
                 </p>
               </div>
 
               {/* Footer and Submit Actions */}
-              <div className="flex justify-end gap-3 pt-4 border-t border-gray-800 font-mono text-xs">
+              <div className="flex justify-end gap-3 pt-4 border-t border-[var(--border-tech)] font-mono text-xs">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-6 py-3 cursor-pointer text-gray-400 border border-transparent hover:border-gray-800 transition-all uppercase tracking-wider"
+                  className="px-6 py-3 cursor-pointer text-[var(--text-muted)] border border-transparent hover:border-[var(--border-tech)] transition-all uppercase tracking-wider"
                   disabled={loading}
                 >
                   Cancelar
@@ -414,13 +414,13 @@ export default function BookingModal({
                   disabled={loading}
                   className={`px-8 py-3 rounded font-bold uppercase tracking-widest flex items-center gap-2 cursor-pointer transition-all ${
                     loading 
-                      ? 'bg-gray-800 text-gray-500 cursor-not-allowed' 
-                      : 'bg-[#65d6e9] text-[#0a0c0d] hover:shadow-[0_0_20px_rgba(101,214,233,0.5)] hover:bg-white'
+                      ? 'bg-[var(--bg-input)] text-[var(--text-muted)] cursor-not-allowed' 
+                      : 'bg-[var(--color-primary-base)] text-[var(--bg-app)] hover:shadow-[0_0_20px_rgba(101,214,233,0.5)] hover:bg-[var(--text-main)] hover:text-[var(--bg-app)]'
                   }`}
                 >
                   {loading ? (
                     <>
-                      <span className="w-4 h-4 border-2 border-[#0a0c0d] border-t-transparent rounded-full animate-spin"></span>
+                      <span className="w-4 h-4 border-2 border-[var(--bg-app)] border-t-transparent rounded-full animate-spin"></span>
                       ENVIANDO...
                     </>
                   ) : (

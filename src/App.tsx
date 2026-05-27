@@ -20,6 +20,23 @@ export default function App() {
   const [loadingDestinations, setLoadingDestinations] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>('');
   
+  // Theme State
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    const saved = localStorage.getItem('theme');
+    return saved ? saved === 'dark' : true;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    if (isDarkMode) {
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.add('light');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+  
   // High fidelity transfer parameters to bootstrap custom booking quotes
   const [preSelected, setPreSelected] = useState<{
     originId?: string;
@@ -87,13 +104,15 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#0a0c0d] font-sans text-white min-h-screen flex flex-col selection:bg-[#65d6e9] selection:text-[#0a0c0d]">
+    <div className="bg-[var(--bg-app)] font-sans text-[var(--text-main)] min-h-screen flex flex-col selection:bg-[var(--color-primary-base)] selection:text-[var(--bg-app)] transition-colors duration-300">
       
       {/* Dynamic Persistent Navbar */}
       <Navbar 
         currentPage={currentPage} 
         onPageChange={setCurrentPage} 
-        onOpenBooking={handleOpenGeneralBooking} 
+        onOpenBooking={handleOpenGeneralBooking}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
       />
 
       {/* Main Content Layout routing page switcher */}

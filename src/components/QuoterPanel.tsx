@@ -46,13 +46,13 @@ export default function QuoterPanel({
   return (
     <section className="py-12 max-w-5xl mx-auto px-6">
       <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#65d6e9]/10 border border-[#65d6e9]/30 text-[#65d6e9] font-mono text-[10px] tracking-widest uppercase mb-3 rounded-full">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[var(--color-primary-base)]/10 border border-[var(--color-primary-base)]/30 text-[var(--color-primary-base)] font-mono text-[10px] tracking-widest uppercase mb-3 rounded-full">
           CONEXIÓN GLOBAL DIRECTA
         </div>
-        <h2 className="text-3xl md:text-4xl font-display font-extrabold text-white uppercase tracking-tight">
+        <h2 className="text-3xl md:text-4xl font-display font-extrabold text-[var(--text-main)] uppercase tracking-tight">
           CALCULADOR DE TRASLADOS
         </h2>
-        <p className="text-gray-400 font-mono text-xs tracking-wider mt-1.5 uppercase">
+        <p className="text-[var(--text-muted)] font-mono text-xs tracking-wider mt-1.5 uppercase">
           Precios fijos garantizados sin cargos ocultos ni tarifas dinámicas
         </p>
       </div>
@@ -60,9 +60,9 @@ export default function QuoterPanel({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         {/* Main interactive controller panel */}
-        <div className="lg:col-span-7 bg-[#0f1214] border border-[#65d6e9]/15 rounded-xl p-6 md:p-8 space-y-6 relative">
+        <div className="lg:col-span-7 bg-[var(--bg-card)] border border-[var(--color-primary-base)]/15 rounded-xl p-6 md:p-8 space-y-6 relative">
           
-          <div className="absolute top-4 right-4 bg-gray-900 border border-gray-800 text-gray-400 font-mono text-[9px] px-2 py-0.5 rounded uppercase">
+          <div className="absolute top-4 right-4 bg-[var(--bg-input)] border border-[var(--border-tech)] text-[var(--text-muted)] font-mono text-[9px] px-2 py-0.5 rounded uppercase">
             REGULADO V.24
           </div>
 
@@ -70,16 +70,16 @@ export default function QuoterPanel({
             
             {/* Pick Point */}
             <div className="relative">
-              <label className="block text-[#65d6e9] text-[10px] font-mono tracking-widest mb-1.5 uppercase">
+              <label className="block text-[var(--color-primary-base)] text-[10px] font-mono tracking-widest mb-1.5 uppercase">
                 🛫 Punto de Recogida (Origen)
               </label>
               <select
                 value={originId}
                 onChange={(e) => setOriginId(e.target.value)}
-                className="w-full bg-[#0a0c0d] border border-[#65d6e9]/25 text-white p-3 rounded font-mono text-xs focus:outline-none focus:border-[#65d6e9] transition-all cursor-pointer h-11"
+                className="w-full bg-[var(--bg-input)] border border-[var(--color-primary-base)]/25 text-[var(--text-main)] p-3 rounded font-mono text-xs focus:outline-none focus:border-[var(--color-primary-base)] transition-all cursor-pointer h-11"
               >
                 {LOCATIONS_DATA.map((loc) => (
-                  <option key={loc.id} value={loc.id} className="bg-[#111415] text-white">
+                  <option key={loc.id} value={loc.id} className="bg-[var(--bg-input)] text-[var(--text-main)]">
                     [{loc.country}] {loc.name}
                   </option>
                 ))}
@@ -91,7 +91,7 @@ export default function QuoterPanel({
               <button
                 onClick={handleSwap}
                 type="button"
-                className="p-2 border border-[#65d6e9]/30 bg-[#0a0c0d] text-[#65d6e9] rounded-full hover:bg-[#65d6e9]/15 transition-all cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(101,214,233,0.3)]"
+                className="p-2 border border-[var(--color-primary-base)]/30 bg-[var(--bg-app)] text-[var(--color-primary-base)] rounded-full hover:bg-[var(--color-primary-base)]/15 transition-all cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(101,214,233,0.3)]"
                 title="Invertir trayecto"
               >
                 <ArrowRightLeft className="h-4 w-4 rotate-90 lg:rotate-0" />
@@ -100,16 +100,16 @@ export default function QuoterPanel({
 
             {/* Drop Point */}
             <div>
-              <label className="block text-[#65d6e9] text-[10px] font-mono tracking-widest mb-1.5 uppercase">
+              <label className="block text-[var(--color-primary-base)] text-[10px] font-mono tracking-widest mb-1.5 uppercase">
                 🏨 Destino del Traslado
               </label>
               <select
                 value={destId}
                 onChange={(e) => setDestId(e.target.value)}
-                className="w-full bg-[#0a0c0d] border border-[#65d6e9]/25 text-white p-3 rounded font-mono text-xs focus:outline-none focus:border-[#65d6e9] transition-all cursor-pointer h-11"
+                className="w-full bg-[var(--bg-input)] border border-[var(--color-primary-base)]/25 text-[var(--text-main)] p-3 rounded font-mono text-xs focus:outline-none focus:border-[var(--color-primary-base)] transition-all cursor-pointer h-11"
               >
                 {LOCATIONS_DATA.map((loc) => (
-                  <option key={loc.id} value={loc.id} className="bg-[#111415] text-white">
+                  <option key={loc.id} value={loc.id} className="bg-[var(--bg-input)] text-[var(--text-main)]">
                     [{loc.country}] {loc.name}
                   </option>
                 ))}
@@ -118,9 +118,9 @@ export default function QuoterPanel({
 
             {/* Capacity Input */}
             <div>
-              <label className="block text-[#65d6e9] text-[10px] font-mono tracking-widest mb-1.5 uppercase flex justify-between items-center">
+              <label className="block text-[var(--color-primary-base)] text-[10px] font-mono tracking-widest mb-1.5 uppercase flex justify-between items-center">
                 <span>👤 Cantidad de pasajeros</span>
-                <span className="text-gray-500 font-normal">Máximo 6 por vehículo</span>
+                <span className="text-[var(--text-muted)] font-normal">Máximo 6 por vehículo</span>
               </label>
               <div className="grid grid-cols-6 gap-2">
                 {[1, 2, 3, 4, 5, 6].map((num) => (
@@ -130,8 +130,8 @@ export default function QuoterPanel({
                     onClick={() => setPassengers(num)}
                     className={`py-2 rounded font-mono text-xs font-semibold cursor-pointer border transition-all ${
                       passengers === num
-                        ? 'bg-[#65d6e9] text-[#0a0c0d] border-[#65d6e9] shadow-[0_0_10px_rgba(101,214,233,0.4)]'
-                        : 'bg-[#111415] border-gray-800 text-gray-400 hover:border-[#65d6e9]/30 hover:text-[#65d6e9]'
+                        ? 'bg-[var(--color-primary-base)] text-[var(--bg-app)] border-[var(--color-primary-base)] shadow-[0_0_10px_rgba(101,214,233,0.4)]'
+                        : 'bg-[var(--bg-input)] border-[var(--border-tech)] text-[var(--text-muted)] hover:border-[var(--color-primary-base)]/30 hover:text-[var(--color-primary-base)]'
                     }`}
                   >
                     {num}
@@ -142,9 +142,9 @@ export default function QuoterPanel({
 
           </div>
 
-          <div className="bg-[#111415] p-4 rounded border border-gray-800 space-y-2 text-xs text-gray-400 font-sans">
+          <div className="bg-[var(--bg-input)] p-4 rounded border border-[var(--border-tech)] space-y-2 text-xs text-[var(--text-muted)] font-sans">
             <div className="flex gap-2 items-start">
-              <ShieldCheck className="h-4 w-4 text-[#65d6e9] flex-shrink-0 mt-0.5" />
+              <ShieldCheck className="h-4 w-4 text-[var(--color-primary-base)] flex-shrink-0 mt-0.5" />
               <p>
                 <strong>Tipo de Vehículo Recomendado:</strong> {passengers <= 4 ? 'Sedán de turismo ejecutivo (4 plazas más equipaje)' : 'Van de alta capacidad (6 plazas con equipaje extendido)'}.
               </p>
@@ -154,17 +154,17 @@ export default function QuoterPanel({
         </div>
 
         {/* Pricing information summary card with instant quotes display */}
-        <div className="lg:col-span-5 bg-[#0a0c0d] border border-[#65d6e9]/30 p-6 md:p-8 rounded-xl shadow-2xl relative flex flex-col justify-between self-stretch overflow-hidden">
+        <div className="lg:col-span-5 bg-[var(--bg-app)] border border-[var(--color-primary-base)]/30 p-6 md:p-8 rounded-xl shadow-2xl relative flex flex-col justify-between self-stretch overflow-hidden">
           
           {/* Ambient visual background glow inside card */}
-          <div className="absolute right-0 top-0 w-32 h-32 bg-[#65d6e9]/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute right-0 top-0 w-32 h-32 bg-[var(--color-primary-base)]/5 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="space-y-6">
-            <div className="border-b border-gray-800 pb-4">
-              <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-1">
+            <div className="border-b border-[var(--border-tech)] pb-4">
+              <h3 className="text-sm font-mono text-[var(--text-muted)] uppercase tracking-widest mb-1">
                 RESUMEN DE COTIZACIÓN
               </h3>
-              <div className="text-[10px] font-mono text-[#65d6e9]/80 uppercase tracking-widest flex items-center gap-1.5">
+              <div className="text-[10px] font-mono text-[var(--color-primary-base)]/80 uppercase tracking-widest flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
                 PRECIO GARANTIZADO EN TIEMPO REAL
               </div>
@@ -172,34 +172,34 @@ export default function QuoterPanel({
 
             <div className="space-y-4 font-mono text-xs">
               <div className="flex items-start justify-between">
-                <span className="text-gray-500 uppercase font-light">Origen:</span>
-                <span className="text-right text-white font-medium max-w-[200px] truncate" title={originLoc?.name}>
+                <span className="text-[var(--text-muted)] uppercase font-light">Origen:</span>
+                <span className="text-right text-[var(--text-main)] font-medium max-w-[200px] truncate" title={originLoc?.name}>
                   {originLoc?.name?.split('(')[0]}
                 </span>
               </div>
 
               <div className="flex items-start justify-between">
-                <span className="text-gray-500 uppercase font-light">Destino:</span>
-                <span className="text-right text-white font-medium max-w-[200px] truncate" title={destLoc?.name}>
+                <span className="text-[var(--text-muted)] uppercase font-light">Destino:</span>
+                <span className="text-right text-[var(--text-main)] font-medium max-w-[200px] truncate" title={destLoc?.name}>
                   {destLoc?.name?.split('(')[0]}
                 </span>
               </div>
 
               <div className="flex justify-between">
-                <span className="text-gray-500 uppercase font-light">Servicio:</span>
-                <span className="text-right text-[#65d6e9] font-semibold">
+                <span className="text-[var(--text-muted)] uppercase font-light">Servicio:</span>
+                <span className="text-right text-[var(--color-primary-base)] font-semibold">
                   {passengers <= 4 ? 'Privado Auto' : 'Privado Van Especial'}
                 </span>
               </div>
 
               {priceInfo.message && (
-                <div className="bg-[#65d6e9]/5 border border-[#65d6e9]/10 p-2.5 rounded text-[11px] text-[#65d6e9]/90 text-center uppercase tracking-wide">
+                <div className="bg-[var(--color-primary-base)]/5 border border-[var(--color-primary-base)]/10 p-2.5 rounded text-[11px] text-[var(--color-primary-base)]/90 text-center uppercase tracking-wide">
                   ✓ {priceInfo.message}
                 </div>
               )}
             </div>
 
-            <div className="bg-gradient-to-br from-[#111415] to-[#0f1214] p-5 rounded-lg border border-gray-800/80 text-center py-6">
+            <div className="bg-gradient-to-br from-[var(--bg-input)] to-[var(--bg-card)] p-5 rounded-lg border border-[var(--border-tech)] text-center py-6">
               
               {originId === destId ? (
                 <div className="text-xs text-red-400 font-mono uppercase tracking-widest py-4">
@@ -207,13 +207,13 @@ export default function QuoterPanel({
                 </div>
               ) : (
                 <>
-                  <div className="text-gray-500 font-mono text-[9px] uppercase tracking-widest mb-1">
+                  <div className="text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1">
                     VALOR ESTIMADO NETO
                   </div>
-                  <div className="text-3xl font-bold text-white tracking-tight">
+                  <div className="text-3xl font-bold text-[var(--text-main)] tracking-tight">
                     ARS ${priceInfo.ars.toLocaleString()}
                   </div>
-                  <div className="text-sm font-mono text-[#65d6e9] mt-1">
+                  <div className="text-sm font-mono text-[var(--color-primary-base)] mt-1">
                     USD ${priceInfo.usd} aprox.
                   </div>
                 </>
@@ -229,13 +229,13 @@ export default function QuoterPanel({
               type="button"
               className={`w-full py-4 rounded font-mono font-bold uppercase text-[11px] tracking-widest transition-all ${
                 originId === destId
-                  ? 'bg-gray-800 text-gray-600 border border-gray-900 cursor-not-allowed'
-                  : 'bg-[#65d6e9] text-[#0a0c0d] hover:shadow-[0_0_25px_rgba(101,214,233,0.5)] hover:bg-white cursor-pointer hover:scale-[1.01]'
+                  ? 'bg-[var(--bg-input)] text-[var(--text-muted)] border border-[var(--border-tech)] cursor-not-allowed'
+                  : 'bg-[var(--color-primary-base)] text-[var(--bg-app)] hover:shadow-[0_0_25px_rgba(101,214,233,0.5)] hover:bg-[var(--text-main)] hover:text-[var(--bg-app)] cursor-pointer hover:scale-[1.01]'
               }`}
             >
               CONFIRMAR Y RESERVAR TRASLADO
             </button>
-            <p className="text-center text-[9px] font-sans text-gray-500 mt-2">
+            <p className="text-center text-[9px] font-sans text-[var(--text-muted)] mt-2">
               Se requiere confirmación con al menos 12 horas de anticipación.
             </p>
           </div>

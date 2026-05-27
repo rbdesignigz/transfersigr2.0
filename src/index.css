@@ -6,13 +6,45 @@
   --font-mono: "JetBrains Mono", monospace;
   --font-display: "Geist", sans-serif;
 
-  --color-primary-base: #65d6e9;
-  --color-background-app: #0a0c0d;
-  --color-surface-card: #0f1214;
-  --color-surface-input: #111415;
-  --color-border-tech: rgba(101, 214, 233, 0.2);
-  --color-border-tech-hover: rgba(101, 214, 233, 0.5);
-  --color-custom-teal: #65d6e9;
+  --color-primary-base: var(--color-primary-base-val);
+  --color-background-app: var(--bg-app);
+  --color-surface-card: var(--bg-card);
+  --color-surface-input: var(--bg-input);
+  --color-border-tech: var(--border-tech);
+  --color-border-tech-hover: var(--border-tech-hover);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-custom-teal: var(--color-primary-base-val);
+}
+
+:root {
+  /* Dark Mode Default (Original Sci-Fi Theme) */
+  --color-primary-base-val: #65d6e9;
+  --bg-app: #0a0c0d;
+  --bg-card: #0f1214;
+  --bg-input: #111415;
+  --border-tech: rgba(101, 214, 233, 0.2);
+  --border-tech-hover: rgba(101, 214, 233, 0.5);
+  --text-main: #ffffff;
+  --text-muted: #9ca3af; /* Tailwind gray-400 */
+}
+
+html.light {
+  /* Light Mode (Clean/Corporate Theme) */
+  --color-primary-base-val: #0088a8; /* Darker cyan for better contrast on white */
+  --bg-app: #f4f7f9;
+  --bg-card: #ffffff;
+  --bg-input: #f8fafc; /* Slate 50 */
+  --border-tech: rgba(0, 136, 168, 0.2);
+  --border-tech-hover: rgba(0, 136, 168, 0.5);
+  --text-main: #111827; /* Gray 900 */
+  --text-muted: #4b5563; /* Gray 600 */
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom scrollbar matching styling guide */
