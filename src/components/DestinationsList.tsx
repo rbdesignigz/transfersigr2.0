@@ -15,8 +15,8 @@ export default function DestinationsList({ destinations, onSelectDestination, lo
   const activeDestinations = destinations.filter(d => d.status === 'Activo')
     .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
-  const filteredDestinations = filterCode === 'ALL' 
-    ? activeDestinations 
+  const filteredDestinations = filterCode === 'ALL'
+    ? activeDestinations
     : activeDestinations.filter(d => d.code === filterCode);
 
   return (
@@ -37,16 +37,15 @@ export default function DestinationsList({ destinations, onSelectDestination, lo
         <div className="flex flex-wrap justify-center gap-3 mt-4">
           <button
             onClick={() => setFilterCode('ALL')}
-            className={`px-5 py-2 border font-mono text-[10px] tracking-widest uppercase transition-all flex items-center gap-2 cursor-pointer ${
-              filterCode === 'ALL'
-                ? 'bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border-[var(--color-primary-base)] shadow-[0_0_15px_rgba(101,214,233,0.3)]'
-                : 'border-[var(--border-tech)] text-[var(--text-muted)] hover:text-[var(--color-primary-base)] hover:border-[var(--color-primary-base)]/40'
-            }`}
+            className={`px-5 py-2 border font-mono text-[10px] tracking-widest uppercase transition-all flex items-center gap-2 cursor-pointer ${filterCode === 'ALL'
+              ? 'bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border-[var(--color-primary-base)] shadow-[0_0_15px_rgba(101,214,233,0.3)]'
+              : 'border-[var(--border-tech)] text-[var(--text-muted)] hover:text-[var(--color-primary-base)] hover:border-[var(--color-primary-base)]/40'
+              }`}
           >
             <span className={`w-1 h-1 rounded-full ${filterCode === 'ALL' ? 'bg-[var(--color-primary-base)]' : 'bg-gray-500'}`}></span>
             Todos los países
           </button>
-          
+
           {(['AR', 'BR', 'PY'] as const).map(code => {
             const label = code === 'AR' ? 'Argentina' : code === 'BR' ? 'Brasil' : 'Paraguay';
             const isActive = filterCode === code;
@@ -54,11 +53,10 @@ export default function DestinationsList({ destinations, onSelectDestination, lo
               <button
                 key={code}
                 onClick={() => setFilterCode(code)}
-                className={`px-5 py-2 border font-mono text-[10px] tracking-widest uppercase transition-all flex items-center gap-2 cursor-pointer ${
-                  isActive
-                    ? 'bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border-[var(--color-primary-base)] shadow-[0_0_15px_rgba(101,214,233,0.3)]'
-                    : 'border-[var(--border-tech)] text-[var(--text-muted)] hover:text-[var(--color-primary-base)] hover:border-[var(--color-primary-base)]/40'
-                }`}
+                className={`px-5 py-2 border font-mono text-[10px] tracking-widest uppercase transition-all flex items-center gap-2 cursor-pointer ${isActive
+                  ? 'bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border-[var(--color-primary-base)] shadow-[0_0_15px_rgba(101,214,233,0.3)]'
+                  : 'border-[var(--border-tech)] text-[var(--text-muted)] hover:text-[var(--color-primary-base)] hover:border-[var(--color-primary-base)]/40'
+                  }`}
               >
                 <span className={`w-1 h-1 rounded-full ${isActive ? 'bg-[var(--color-primary-base)]' : 'bg-gray-500'}`}></span>
                 {label}
@@ -96,11 +94,11 @@ export default function DestinationsList({ destinations, onSelectDestination, lo
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {filteredDestinations.map((dest) => (
-          <article
-            key={dest.id}
-            className="bg-[var(--bg-card)] rounded-xl overflow-hidden shadow-2xl transition-all duration-300 flex flex-col border border-[var(--color-primary-base)]/10 hover:border-[var(--color-primary-base)]/40 hover:shadow-[0_0_30px_rgba(101,214,233,0.12)] relative"
-          >
-            {/* Image section */}
+            <article
+              key={dest.id}
+              className="bg-[var(--bg-card)] rounded-xl overflow-hidden shadow-2xl transition-all duration-300 flex flex-col border border-[var(--color-primary-base)]/10 hover:border-[var(--color-primary-base)]/40 hover:shadow-[0_0_30px_rgba(101,214,233,0.12)] relative"
+            >
+              {/* Image section */}
               <div className="relative h-64 overflow-hidden group">
                 <img
                   alt={`${dest.title} excursion travel`}
@@ -108,80 +106,80 @@ export default function DestinationsList({ destinations, onSelectDestination, lo
                   src={dest.imageUrl}
                 />
 
-              {/* Status "Activo" */}
-              <div className="absolute top-4 left-4 bg-[var(--color-primary-base)] text-[var(--bg-app)] font-mono text-[9px] px-3 py-1 rounded-full font-bold uppercase tracking-widest shadow-lg select-none">
-                {dest.status}
+                {/* Status "Activo" */}
+                <div className="absolute top-4 left-4 bg-[var(--color-primary-base)] text-[var(--bg-app)] font-mono text-[9px] px-3 py-1 rounded-full font-bold uppercase tracking-widest shadow-lg select-none">
+                  {dest.status}
+                </div>
+
+                {/* Country Code (AR, BR, PY) */}
+                <div className="absolute top-4 right-4 bg-[var(--bg-app)]/80 backdrop-blur-md text-[var(--text-main)] font-mono text-[9px] px-2.5 py-1 border border-white/20 rounded font-bold uppercase tracking-widest">
+                  {dest.code}
+                </div>
+
+                {/* Gradient dark frame mask */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] to-transparent opacity-60"></div>
               </div>
 
-              {/* Country Code (AR, BR, PY) */}
-              <div className="absolute top-4 right-4 bg-[var(--bg-app)]/80 backdrop-blur-md text-[var(--text-main)] font-mono text-[9px] px-2.5 py-1 border border-white/20 rounded font-bold uppercase tracking-widest">
-                {dest.code}
-              </div>
+              {/* Content info section */}
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-[var(--text-main)] uppercase tracking-wide">
+                    {dest.title}
+                  </h3>
+                </div>
 
-              {/* Gradient dark frame mask */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] to-transparent opacity-60"></div>
-            </div>
+                <p className="text-sm text-[var(--text-muted)] mb-8 flex-grow font-light leading-relaxed">
+                  {dest.description}
+                </p>
 
-            {/* Content info section */}
-            <div className="p-6 flex flex-col flex-grow">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl md:text-2xl font-display font-bold text-[var(--text-main)] uppercase tracking-wide">
-                  {dest.title}
-                </h3>
-              </div>
-              
-              <p className="text-sm text-[var(--text-muted)] mb-8 flex-grow font-light leading-relaxed">
-                {dest.description}
-              </p>
-
-              {/* Price Details table matching precisely the specifications */}
-              <div className="space-y-3 pt-6 border-t border-[var(--border-tech)]">
-                {(dest.price4Pax > 0 || dest.price4PaxUsd > 0) && (
-                  <div className="flex justify-between items-center text-xs font-mono">
-                    <span className="text-[var(--text-muted)] uppercase tracking-widest flex items-center gap-1">
-                      👥 Hasta 4 Pax (Auto):
-                    </span>
-                    <div className="text-right">
-                      {dest.price4Pax > 0 && (
-                        <div className="text-[var(--color-primary-base)] font-bold text-sm">ARS ${dest.price4Pax.toLocaleString()}</div>
-                      )}
-                      {dest.price4PaxUsd > 0 && (
-                        <div className="text-[var(--color-primary-base)]/70 text-[10px]">USD ${dest.price4PaxUsd}</div>
-                      )}
+                {/* Price Details table matching precisely the specifications */}
+                <div className="space-y-3 pt-6 border-t border-[var(--border-tech)]">
+                  {(dest.price4Pax > 0 || dest.price4PaxUsd > 0) && (
+                    <div className="flex justify-between items-center text-xs font-mono">
+                      <span className="text-[var(--text-muted)] uppercase tracking-widest flex items-center gap-1">
+                        Hasta 4 Pax:
+                      </span>
+                      <div className="text-right">
+                        {dest.price4Pax > 0 && (
+                          <div className="text-[var(--color-primary-base)] font-bold text-sm">ARS ${dest.price4Pax.toLocaleString()}</div>
+                        )}
+                        {dest.price4PaxUsd > 0 && (
+                          <div className="text-[var(--color-primary-base)]/70 text-[10px]">USD ${dest.price4PaxUsd}</div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {(dest.price6Pax > 0 || dest.price6PaxUsd > 0) && (
-                  <div className="flex justify-between items-center text-xs font-mono">
-                    <span className="text-[var(--text-muted)] uppercase tracking-widest flex items-center gap-1">
-                      👥 Hasta 6 Pax (Van):
-                    </span>
-                    <div className="text-right">
-                      {dest.price6Pax > 0 && (
-                        <div className="text-[var(--color-primary-base)] font-bold text-sm">ARS ${dest.price6Pax.toLocaleString()}</div>
-                      )}
-                      {dest.price6PaxUsd > 0 && (
-                        <div className="text-[var(--color-primary-base)]/70 text-[10px]">USD ${dest.price6PaxUsd}</div>
-                      )}
+                  {(dest.price6Pax > 0 || dest.price6PaxUsd > 0) && (
+                    <div className="flex justify-between items-center text-xs font-mono">
+                      <span className="text-[var(--text-muted)] uppercase tracking-widest flex items-center gap-1">
+                        Hasta 6 Pax:
+                      </span>
+                      <div className="text-right">
+                        {dest.price6Pax > 0 && (
+                          <div className="text-[var(--color-primary-base)] font-bold text-sm">ARS ${dest.price6Pax.toLocaleString()}</div>
+                        )}
+                        {dest.price6PaxUsd > 0 && (
+                          <div className="text-[var(--color-primary-base)]/70 text-[10px]">USD ${dest.price6PaxUsd}</div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
 
-              {/* Booking CTA trigger */}
-              <button 
-                type="button"
-                onClick={() => onSelectDestination(dest)}
-                className="mt-5 w-full bg-transparent border border-[var(--color-primary-base)]/20 hover:border-[var(--color-primary-base)]/65 text-[var(--text-muted)] hover:text-[var(--color-primary-base)] text-xs font-mono uppercase py-2.5 rounded hover:bg-[var(--color-primary-base)]/10 transition-all font-semibold tracking-wider cursor-pointer"
-              >
-                COTIZAR / RESERVAR TRASLADO
-              </button>
-            </div>
-          </article>
-        ))}
-      </div>
-    )}
+                {/* Booking CTA trigger */}
+                <button
+                  type="button"
+                  onClick={() => onSelectDestination(dest)}
+                  className="mt-5 w-full bg-transparent border border-[var(--color-primary-base)]/20 hover:border-[var(--color-primary-base)]/65 text-[var(--text-muted)] hover:text-[var(--color-primary-base)] text-xs font-mono uppercase py-2.5 rounded hover:bg-[var(--color-primary-base)]/10 transition-all font-semibold tracking-wider cursor-pointer"
+                >
+                  COTIZAR / RESERVAR TRASLADO
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

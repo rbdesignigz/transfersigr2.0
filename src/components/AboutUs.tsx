@@ -41,7 +41,7 @@ export default function AboutUs() {
             Nacimos con la vocación de conectar viajeros de todo el mundo con las majestuosas maravillas de las Cataratas del Iguazú y la Triple Frontera de manera ágil, confortable y absolutamente segura. Con más de cuatro décadas en las carreteras de Argentina, Brasil y Paraguay, formamos el equipo de choferes profesionales más experimentado del territorio.
           </p>
 
-          <div className="space-y-3 font-mono text-xs text-gray-300">
+          <div className="space-y-3 font-mono text-xs text-[var(--text-muted)]">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-[var(--color-primary-base)]" />
               <span>Flota propia de autos tipo sedán ejecutivos y minivans especiales</span>

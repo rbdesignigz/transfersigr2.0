@@ -50,9 +50,9 @@ export default function Navbar({ currentPage, onPageChange, onOpenBooking, isDar
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`transition-all duration-300 pb-1 cursor-pointer hover:text-[#65d6e9] hover:tech-glow ${isActive
-                  ? 'text-[#65d6e9] font-bold border-b-2 border-[#65d6e9] shadow-[0_1px_0_rgba(101,214,233,0.5)]'
-                  : 'text-gray-400 hover:text-white'
+                className={`transition-all duration-300 pb-1 cursor-pointer hover:tech-glow ${isActive
+                  ? 'text-[var(--color-primary-base)] font-bold border-b-2 border-[var(--color-primary-base)] shadow-[0_1px_0_var(--border-tech-hover)]'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text-main)]'
                   }`}
               >
                 {item.label}
@@ -90,7 +90,7 @@ export default function Navbar({ currentPage, onPageChange, onOpenBooking, isDar
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`py-2 border-b border-gray-800 last:border-none transition-all ${isActive ? 'text-[#65d6e9] font-bold' : 'text-gray-400'
+                  className={`py-2 border-b border-[var(--border-tech)] last:border-none transition-all ${isActive ? 'text-[var(--color-primary-base)] font-bold' : 'text-[var(--text-muted)]'
                     }`}
                 >
                   {item.label}

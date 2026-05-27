@@ -406,25 +406,25 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
   // UNSERIALIZED RENDER DRAWER MENU
   // -------------------------------------------------------------
   const sidebarNavContent = (
-    <div className="flex flex-col h-full bg-[#0f1214] border border-[#65d6e9]/10 rounded-xl text-white p-5 justify-between space-y-8 select-none">
+    <div className="flex flex-col h-full bg-[var(--bg-card)] border border-[var(--color-primary-base)]/10 rounded-xl text-[var(--text-main)] p-5 justify-between space-y-8 select-none">
       <div className="space-y-6">
 
         {/* User administrative profile details block */}
-        <div className="p-4 bg-[#0a0c0d] rounded-lg border border-[#65d6e9]/15 text-center relative overflow-hidden">
+        <div className="p-4 bg-[var(--bg-app)] rounded-lg border border-[var(--color-primary-base)]/15 text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#65d6e9] to-transparent"></div>
 
-          <div className="w-12 h-12 rounded-full bg-[#65d6e9]/5 border border-[#65d6e9]/30 flex items-center justify-center mx-auto mb-2.5">
-            <Unlock className="h-5.5 w-5.5 text-[#65d6e9]" />
+          <div className="w-12 h-12 rounded-full bg-[var(--color-primary-base)]/5 border border-[var(--color-primary-base)]/30 flex items-center justify-center mx-auto mb-2.5">
+            <Unlock className="h-5.5 w-5.5 text-[var(--color-primary-base)]" />
           </div>
 
-          <h4 className="text-xs font-semibold text-white uppercase tracking-tight truncate">
+          <h4 className="text-xs font-semibold text-[var(--text-main)] uppercase tracking-tight truncate">
             {currentUser?.fullName}
           </h4>
-          <span className="text-[10px] font-mono text-[#65d6e9]/65 lowercase mt-0.5 block">
+          <span className="text-[10px] font-mono text-[var(--color-primary-base)]/65 lowercase mt-0.5 block">
             @{currentUser?.username}
           </span>
 
-          <div className="mt-3.5 inline-block px-2.5 py-1 text-[8px] font-mono tracking-widest uppercase font-bold rounded bg-[#65d6e9]/10 text-[#65d6e9] border border-[#65d6e9]/15">
+          <div className="mt-3.5 inline-block px-2.5 py-1 text-[8px] font-mono tracking-widest uppercase font-bold rounded bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border border-[var(--color-primary-base)]/15">
             {currentUser?.role === 'admin' ? '🛡️ Administrador' : '👥 Cooperador'}
           </div>
         </div>
@@ -438,11 +438,11 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
               setSidebarOpen(false);
             }}
             className={`w-full flex items-center gap-3 p-3.5 rounded-lg transition-all text-left cursor-pointer border ${currentTab === 'destinations'
-              ? 'bg-[#65d6e9]/10 text-[#65d6e9] border-[#65d6e9]/30 font-bold shadow-[0_0_12px_rgba(101,214,233,0.05)]'
-              : 'text-gray-400 border-transparent hover:text-white hover:bg-[#111415]'
+              ? 'bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border-[var(--color-primary-base)]/30 font-bold shadow-[0_0_12px_rgba(101,214,233,0.05)]'
+              : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-main)] hover:bg-[var(--bg-input)]'
               }`}
           >
-            <Layers className="h-4 w-4 text-[#65d6e9]/80" />
+            <Layers className="h-4 w-4 text-[var(--color-primary-base)]/80" />
             <span>Gestión Tarjetas</span>
           </button>
 
@@ -453,11 +453,11 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
               fetchMessages();
             }}
             className={`w-full flex items-center gap-3 p-3.5 rounded-lg transition-all text-left cursor-pointer border ${currentTab === 'messages'
-              ? 'bg-[#65d6e9]/10 text-[#65d6e9] border-[#65d6e9]/30 font-bold shadow-[0_0_12px_rgba(101,214,233,0.05)]'
-              : 'text-gray-400 border-transparent hover:text-white hover:bg-[#111415]'
+              ? 'bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border-[var(--color-primary-base)]/30 font-bold shadow-[0_0_12px_rgba(101,214,233,0.05)]'
+              : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-main)] hover:bg-[var(--bg-input)]'
               }`}
           >
-            <Mail className="h-4 w-4 text-[#65d6e9]/80" />
+            <Mail className="h-4 w-4 text-[var(--color-primary-base)]/80" />
             <span>Bandeja de Entrada</span>
           </button>
 
@@ -470,11 +470,11 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                 fetchUsers();
               }}
               className={`w-full flex items-center gap-3 p-3.5 rounded-lg transition-all text-left cursor-pointer border ${currentTab === 'users'
-                ? 'bg-[#65d6e9]/10 text-[#65d6e9] border-[#65d6e9]/30 font-bold shadow-[0_0_12px_rgba(101,214,233,0.05)]'
-                : 'text-gray-400 border-transparent hover:text-white hover:bg-[#111415]'
+                ? 'bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border-[var(--color-primary-base)]/30 font-bold shadow-[0_0_12px_rgba(101,214,233,0.05)]'
+                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-main)] hover:bg-[var(--bg-input)]'
                 }`}
             >
-              <Users className="h-4 w-4 text-[#65d6e9]/80" />
+              <Users className="h-4 w-4 text-[var(--color-primary-base)]/80" />
               <span>Gestión Usuarios</span>
             </button>
           )}
@@ -485,7 +485,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
       {/* Logout red execution */}
       <button
         onClick={handleLogout}
-        className="w-full flex items-center justify-center gap-2 p-3 text-red-400 hover:text-white border border-red-500/20 hover:border-red-500/50 bg-red-500/5 font-mono text-[9px] tracking-widest uppercase rounded-lg hover:bg-red-500/10 transition-all cursor-pointer"
+        className="w-full flex items-center justify-center gap-2 p-3 text-red-400 hover:text-[var(--text-main)] border border-red-500/20 hover:border-red-500/50 bg-red-500/5 font-mono text-[9px] tracking-widest uppercase rounded-lg hover:bg-red-500/10 transition-all cursor-pointer"
       >
         <LogOut className="h-3.5 w-3.5" />
         <span>Cerrar Sesión</span>
@@ -499,21 +499,21 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
   if (!currentUser) {
     return (
       <section className="py-16 max-w-sm mx-auto px-4">
-        <div className="bg-[#0f1214] border border-[#65d6e9]/25 rounded-xl p-8 shadow-[0_0_35px_rgba(101,214,233,0.12)] text-center relative space-y-6 overflow-hidden">
+        <div className="bg-[var(--bg-card)] border border-[var(--color-primary-base)]/25 rounded-xl p-8 shadow-[0_0_35px_rgba(101,214,233,0.12)] text-center relative space-y-6 overflow-hidden">
 
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#65d6e9] to-transparent"></div>
 
           <div className="flex justify-center">
-            <div className="w-12 h-12 rounded-full border border-[#65d6e9]/30 bg-[#0a0c0d] flex items-center justify-center">
-              <Lock className="h-5.5 w-5.5 text-[#65d6e9] animate-pulse" />
+            <div className="w-12 h-12 rounded-full border border-[var(--color-primary-base)]/30 bg-[var(--bg-app)] flex items-center justify-center">
+              <Lock className="h-5.5 w-5.5 text-[var(--color-primary-base)] animate-pulse" />
             </div>
           </div>
 
           <div className="space-y-1">
-            <h2 className="text-lg font-display font-black text-white uppercase tracking-tight">
+            <h2 className="text-lg font-display font-black text-[var(--text-main)] uppercase tracking-tight">
               SISTEMA GERENCIAL INTEGRAL
             </h2>
-            <p className="text-[9px] font-mono text-[#65d6e9]/60 uppercase tracking-widest leading-none">
+            <p className="text-[9px] font-mono text-[var(--color-primary-base)]/60 uppercase tracking-widest leading-none">
               Control de Accesos // Estación de Datos
             </p>
           </div>
@@ -528,13 +528,13 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
             <div className="text-left space-y-3">
               {/* Username field */}
               <div className="space-y-1">
-                <label className="text-[8px] font-mono text-gray-500 uppercase tracking-widest">
+                <label className="text-[8px] font-mono text-[var(--text-muted)] uppercase tracking-widest">
                   Usuario o Concesionario:
                 </label>
                 <input
                   type="text"
                   required
-                  className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] p-3 text-white text-center font-mono text-xs rounded focus:outline-none"
+                  className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] p-3 text-[var(--text-main)] text-center font-mono text-xs rounded focus:outline-none"
                   placeholder="Tu nombre de usuario"
                   value={usernameInput}
                   onChange={(e) => setUsernameInput(e.target.value)}
@@ -543,13 +543,13 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
               {/* Password field */}
               <div className="space-y-1">
-                <label className="text-[8px] font-mono text-gray-500 uppercase tracking-widest">
+                <label className="text-[8px] font-mono text-[var(--text-muted)] uppercase tracking-widest">
                   Contraseña Autorizada:
                 </label>
                 <input
                   type="password"
                   required
-                  className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] p-3 text-white text-center font-mono text-xs rounded focus:outline-none"
+                  className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] p-3 text-[var(--text-main)] text-center font-mono text-xs rounded focus:outline-none"
                   placeholder="Tu contraseña secreta"
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
@@ -559,7 +559,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
             <button
               type="submit"
-              className="w-full bg-[#65d6e9] text-[#0a0c0d] font-mono font-bold uppercase py-3.5 text-xs tracking-widest hover:shadow-[0_0_15px_rgba(101,214,233,0.4)] hover:bg-white transition-all cursor-pointer rounded mt-6"
+              className="w-full bg-[var(--color-primary-base)] text-[var(--bg-app)] font-mono font-bold uppercase py-3.5 text-xs tracking-widest hover:shadow-[0_0_15px_rgba(101,214,233,0.4)] hover:bg-white transition-all cursor-pointer rounded mt-6"
             >
               CONECTAR AL SISTEMA
             </button>
@@ -850,23 +850,23 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
       {/* Toast notifications pop-up */}
       {statusMsg.text && (
         <div className={`fixed bottom-4 right-4 z-50 p-4 rounded-xl border shadow-2xl font-mono text-[10px] uppercase tracking-wider flex justify-between items-center gap-4 transition-all duration-300 ${statusMsg.type === 'success'
-          ? 'bg-[#0f1214] border-emerald-500/40 text-emerald-400 shadow-emerald-500/10'
-          : 'bg-[#0f1214] border-red-500/40 text-red-500 shadow-red-500/10'
+          ? 'bg-[var(--bg-card)] border-emerald-500/40 text-emerald-400 shadow-emerald-500/10'
+          : 'bg-[var(--bg-card)] border-red-500/40 text-red-500 shadow-red-500/10'
           }`}>
           <span>✔ {statusMsg.text}</span>
-          <button onClick={() => setStatusMsg({ text: '', type: null })} className="text-gray-500 hover:text-white cursor-pointer">
+          <button onClick={() => setStatusMsg({ text: '', type: null })} className="text-[var(--text-muted)] hover:text-[var(--text-main)] cursor-pointer">
             <X className="h-4 w-4" />
           </button>
         </div>
       )}
 
       {/* TOP HEADER STATUS ROW (MOBILE NAVIGATION BAR COALESCING) */}
-      <div className="flex lg:hidden justify-between items-center bg-[#0f1214] border border-[#65d6e9]/10 p-4 rounded-xl mb-6 gap-3 shadow-lg">
+      <div className="flex lg:hidden justify-between items-center bg-[var(--bg-card)] border border-[var(--color-primary-base)]/10 p-4 rounded-xl mb-6 gap-3 shadow-lg">
         <div className="flex items-center gap-2.5">
-          <Settings className="h-5 w-5 text-[#65d6e9] animate-spin" style={{ animationDuration: '6s' }} />
+          <Settings className="h-5 w-5 text-[var(--color-primary-base)] animate-spin" style={{ animationDuration: '6s' }} />
           <div>
-            <h3 className="text-xs font-display font-extrabold text-white uppercase tracking-tight">Consola Administrativa</h3>
-            <p className="text-[8px] font-mono text-gray-500 uppercase leading-none block">
+            <h3 className="text-xs font-display font-extrabold text-[var(--text-main)] uppercase tracking-tight">Consola Administrativa</h3>
+            <p className="text-[8px] font-mono text-[var(--text-muted)] uppercase leading-none block">
               {currentUser.fullName} // {currentUser.role === 'admin' ? 'ADMIN' : 'COOPERADOR'}
             </p>
           </div>
@@ -874,7 +874,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="bg-[#65d6e9]/10 border border-[#65d6e9]/25 text-[#65d6e9] hover:bg-[#65d6e9] hover:text-[#0a0c0d] px-3.5 py-2 rounded text-[10px] font-mono tracking-wider font-bold transition-all cursor-pointer flex items-center gap-1.5"
+          className="bg-[var(--color-primary-base)]/10 border border-[var(--color-primary-base)]/25 text-[var(--color-primary-base)] hover:bg-[var(--color-primary-base)] hover:text-[var(--bg-app)] px-3.5 py-2 rounded text-[10px] font-mono tracking-wider font-bold transition-all cursor-pointer flex items-center gap-1.5"
         >
           <Menu className="h-3.5 w-3.5" />
           <span>MENÚ APPARATUS</span>
@@ -912,12 +912,12 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
             <div className="space-y-6 animate-fade-in text-left">
 
               {/* Cards Control Dashboard Header */}
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-[#0f1214] border border-gray-800 p-5 rounded-xl gap-4">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-[var(--bg-card)] border border-[var(--border-tech)] p-5 rounded-xl gap-4">
                 <div>
-                  <h3 className="text-base sm:text-lg font-display font-extrabold text-white uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg font-display font-extrabold text-[var(--text-main)] uppercase tracking-tight">
                     GESTIÓN DE TARJETAS DE DESTINO
                   </h3>
-                  <p className="text-[9px] font-mono text-gray-500 uppercase mt-1 tracking-wider">
+                  <p className="text-[9px] font-mono text-[var(--text-muted)] uppercase mt-1 tracking-wider">
                     Permite agregar, editar y eliminar destinos mostrados automáticamente de manera sincronizada.
                   </p>
                 </div>
@@ -936,7 +936,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                   <button
                     onClick={handleAddNew}
                     type="button"
-                    className="bg-[#65d6e9] text-[#0a0c0d] font-mono text-[9px] font-bold uppercase px-4 py-2 rounded hover:bg-white transition-all cursor-pointer flex items-center gap-1.5 shadow-[0_0_15px_rgba(101,214,233,0.3)] tracking-widest ml-auto"
+                    className="bg-[var(--color-primary-base)] text-[var(--bg-app)] font-mono text-[9px] font-bold uppercase px-4 py-2 rounded hover:bg-white transition-all cursor-pointer flex items-center gap-1.5 shadow-[0_0_15px_rgba(101,214,233,0.3)] tracking-widest ml-auto"
                   >
                     <PlusCircle className="h-3.5 w-3.5" />
                     Alta Destino
@@ -946,14 +946,14 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
               {/* DESTINATIONS CARD FORM DRAWER */}
               {isEditing && activeDest && (
-                <div className="bg-[#0f1214] border border-[#65d6e9]/30 rounded-xl p-5 sm:p-6 md:p-8 space-y-6 shadow-2xl relative animate-slide-up">
+                <div className="bg-[var(--bg-card)] border border-[var(--color-primary-base)]/30 rounded-xl p-5 sm:p-6 md:p-8 space-y-6 shadow-2xl relative animate-slide-up">
 
-                  <div className="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-gray-800">
-                    <h3 className="text-sm sm:text-base font-display font-bold text-white uppercase tracking-tight">
+                  <div className="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-[var(--border-tech)]">
+                    <h3 className="text-sm sm:text-base font-display font-bold text-[var(--text-main)] uppercase tracking-tight">
                       {activeDest.id ? `Editar Destino: "${activeDest.title}"` : 'Crear Nueva Tarjeta de Destino'}
                     </h3>
                     <div className="flex items-center justify-between w-full sm:w-auto gap-3">
-                      <span className="bg-[#65d6e9]/10 text-[#65d6e9] border border-[#65d6e9]/30 text-[9px] font-mono px-3 py-1 rounded">
+                      <span className="bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border border-[var(--color-primary-base)]/30 text-[9px] font-mono px-3 py-1 rounded">
                         RECURSO INTERNO DE ENTRADAS
                       </span>
                       <button
@@ -961,7 +961,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                           setIsEditing(false);
                           setActiveDest(null);
                         }}
-                        className="text-gray-400 hover:text-white p-1 hover:bg-gray-800 rounded cursor-pointer"
+                        className="text-[var(--text-muted)] hover:text-[var(--text-main)] p-1 hover:bg-gray-800 rounded cursor-pointer"
                         title="Cerrar editor"
                       >
                         <X className="h-5 w-5" />
@@ -974,13 +974,13 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                       {/* Card Title */}
                       <div className="sm:col-span-2">
-                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                        <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5">
                           Título del destino *
                         </label>
                         <input
                           required
                           type="text"
-                          className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 text-white font-sans text-xs focus:outline-none"
+                          className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 text-[var(--text-main)] font-sans text-xs focus:outline-none"
                           placeholder="Ej. Cataratas del Lado Argentino"
                           value={activeDest.title || ''}
                           onChange={(e) => handleChange('title', e.target.value)}
@@ -989,12 +989,12 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                       {/* Country Selector */}
                       <div>
-                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                        <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5">
                           País de Destino *
                         </label>
                         <select
                           required
-                          className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 text-white font-mono text-xs focus:outline-none"
+                          className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 text-[var(--text-main)] font-mono text-xs focus:outline-none"
                           value={activeDest.country || 'Argentina'}
                           onChange={(e) => handleChange('country', e.target.value)}
                         >
@@ -1006,12 +1006,12 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                       {/* Status Selector */}
                       <div>
-                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                        <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5">
                           Estado de Tarjeta *
                         </label>
                         <select
                           required
-                          className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 text-white font-mono text-xs focus:outline-none"
+                          className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 text-[var(--text-main)] font-mono text-xs focus:outline-none"
                           value={activeDest.status || 'Activo'}
                           onChange={(e) => handleChange('status', e.target.value)}
                         >
@@ -1022,13 +1022,13 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                       {/* Order field */}
                       <div>
-                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                        <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5">
                           Orden de aparición
                         </label>
                         <input
                           type="number"
                           min={1}
-                          className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 font-mono text-xs text-white text-center focus:outline-none"
+                          className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 font-mono text-xs text-[var(--text-main)] text-center focus:outline-none"
                           placeholder="1"
                           value={activeDest.order ?? ''}
                           onChange={(e) => handleChange('order', Number(e.target.value))}
@@ -1039,13 +1039,13 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                     {/* Description Text area */}
                     <div>
-                      <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                      <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5">
                         Descripción descriptiva del trayecto e hitos turísticos *
                       </label>
                       <textarea
                         required
                         rows={3}
-                        className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 text-white font-sans text-xs focus:outline-none"
+                        className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 text-[var(--text-main)] font-sans text-xs focus:outline-none"
                         placeholder="Visite las majestuosas cataratas del lado argentino con su famosa pasarela a la Garganta del Diablo..."
                         value={activeDest.description || ''}
                         onChange={(e) => handleChange('description', e.target.value)}
@@ -1056,17 +1056,17 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-5 items-end">
 
                       <div className="md:col-span-3">
-                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5 flex justify-between">
+                        <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5 flex justify-between">
                           <span>Imagen del Destino</span>
-                          <span className="text-[#65d6e9]/50 lower text-[8px]">Se recomiendan horizontales</span>
+                          <span className="text-[var(--color-primary-base)]/50 lower text-[8px]">Se recomiendan horizontales</span>
                         </label>
                         
                         <div className="flex gap-2 items-center">
                           <div className="relative flex-grow">
-                            <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#65d6e9]/70" />
+                            <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--color-primary-base)]/70" />
                             <input
                               type="url"
-                              className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 pl-10 pr-2 text-white font-mono text-xs focus:outline-none"
+                              className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 pl-10 pr-2 text-[var(--text-main)] font-mono text-xs focus:outline-none"
                               placeholder="https://... o sube una imagen 👉"
                               value={activeDest.imageUrl || ''}
                               onChange={(e) => handleChange('imageUrl', e.target.value)}
@@ -1084,7 +1084,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                             <button 
                               type="button"
                               disabled={uploadingImage}
-                              className="h-11 px-4 bg-[#0a0c0d] border border-[#65d6e9]/40 hover:border-[#65d6e9] hover:bg-[#65d6e9]/10 text-[#65d6e9] rounded flex items-center justify-center gap-2 transition-all min-w-[120px]"
+                              className="h-11 px-4 bg-[var(--bg-app)] border border-[var(--color-primary-base)]/40 hover:border-[var(--color-primary-base)] hover:bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] rounded flex items-center justify-center gap-2 transition-all min-w-[120px]"
                             >
                               {uploadingImage ? (
                                 <span className="font-mono text-xs">{uploadProgress}%</span>
@@ -1100,7 +1100,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                       </div>
 
                       {/* Visual Tiny Image preview */}
-                      <div className="h-11 bg-[#0a0c0d] border border-gray-800 rounded overflow-hidden flex items-center justify-center p-0.5">
+                      <div className="h-11 bg-[var(--bg-app)] border border-[var(--border-tech)] rounded overflow-hidden flex items-center justify-center p-0.5">
                         {activeDest.imageUrl ? (
                           <img
                             src={activeDest.imageUrl}
@@ -1118,64 +1118,64 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                     </div>
 
                     {/* Prices Section */}
-                    <div className="border-t border-gray-800 pt-6 space-y-4">
-                      <h4 className="text-white font-mono text-[10px] font-bold uppercase tracking-widest text-[#65d6e9]/80">
+                    <div className="border-t border-[var(--border-tech)] pt-6 space-y-4">
+                      <h4 className="text-[var(--text-main)] font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--color-primary-base)]/80">
                         💵 LISTADO DE PRECIOS REGULADOS POR CAPACIDAD
                       </h4>
 
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
 
                         <div>
-                          <label className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest mb-1.5">
+                          <label className="block text-[8px] font-mono text-[var(--text-muted)] uppercase tracking-widest mb-1.5">
                             Auto ≤ 4 Pax (ARS $)
                           </label>
                           <input
                             type="number"
                             required
                             min={0}
-                            className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 font-mono text-xs text-white text-right focus:outline-none"
+                            className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 font-mono text-xs text-[var(--text-main)] text-right focus:outline-none"
                             value={activeDest.price4Pax || 0}
                             onChange={(e) => handleChange('price4Pax', Number(e.target.value))}
                           />
                         </div>
 
                         <div>
-                          <label className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest mb-1.5">
+                          <label className="block text-[8px] font-mono text-[var(--text-muted)] uppercase tracking-widest mb-1.5">
                             Van ≤ 6 Pax (ARS $)
                           </label>
                           <input
                             type="number"
                             required
                             min={0}
-                            className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 font-mono text-xs text-white text-right focus:outline-none"
+                            className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 font-mono text-xs text-[var(--text-main)] text-right focus:outline-none"
                             value={activeDest.price6Pax || 0}
                             onChange={(e) => handleChange('price6Pax', Number(e.target.value))}
                           />
                         </div>
 
                         <div>
-                          <label className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest mb-1.5">
+                          <label className="block text-[8px] font-mono text-[var(--text-muted)] uppercase tracking-widest mb-1.5">
                             Auto ≤ 4 Pax (USD $)
                           </label>
                           <input
                             type="number"
                             required
                             min={0}
-                            className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 font-mono text-xs text-white text-right focus:outline-none"
+                            className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 font-mono text-xs text-[var(--text-main)] text-right focus:outline-none"
                             value={activeDest.price4PaxUsd || 0}
                             onChange={(e) => handleChange('price4PaxUsd', Number(e.target.value))}
                           />
                         </div>
 
                         <div>
-                          <label className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest mb-1.5">
+                          <label className="block text-[8px] font-mono text-[var(--text-muted)] uppercase tracking-widest mb-1.5">
                             Van ≤ 6 Pax (USD $)
                           </label>
                           <input
                             type="number"
                             required
                             min={0}
-                            className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 font-mono text-xs text-white text-right focus:outline-none"
+                            className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 font-mono text-xs text-[var(--text-main)] text-right focus:outline-none"
                             value={activeDest.price6PaxUsd || 0}
                             onChange={(e) => handleChange('price6PaxUsd', Number(e.target.value))}
                           />
@@ -1185,14 +1185,14 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                     </div>
 
                     {/* Back action and Save */}
-                    <div className="flex justify-end gap-3 pt-5 border-t border-gray-800 font-mono text-[10px] uppercase tracking-wider">
+                    <div className="flex justify-end gap-3 pt-5 border-t border-[var(--border-tech)] font-mono text-[10px] uppercase tracking-wider">
                       <button
                         type="button"
                         onClick={() => {
                           setIsEditing(false);
                           setActiveDest(null);
                         }}
-                        className="px-5 py-3 border border-transparent hover:border-gray-800 rounded text-gray-400 hover:text-white transition-all cursor-pointer font-bold"
+                        className="px-5 py-3 border border-transparent hover:border-[var(--border-tech)] rounded text-[var(--text-muted)] hover:text-[var(--text-main)] transition-all cursor-pointer font-bold"
                         disabled={submitting}
                       >
                         Cancelar
@@ -1201,7 +1201,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="bg-[#65d6e9] text-[#0a0c0d] font-bold px-7 py-3 rounded hover:shadow-[0_0_20px_rgba(101,214,233,0.5)] hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer"
+                        className="bg-[var(--color-primary-base)] text-[var(--bg-app)] font-bold px-7 py-3 rounded hover:shadow-[0_0_20px_rgba(101,214,233,0.5)] hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer"
                       >
                         <Save className="h-4 w-4" />
                         {submitting ? 'Guardando...' : 'Grabar y Sincronizar'}
@@ -1213,25 +1213,25 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
               )}
 
               {/* LISTING TABLE GRID OF DESTIONATIONS */}
-              <div className="bg-[#0f1214] border border-gray-800 rounded-xl overflow-hidden shadow-xl text-left">
-                <div className="p-4 bg-[#111415] border-b border-gray-800 flex justify-between items-center font-mono">
-                  <span className="text-gray-400 text-[10px] sm:text-xs uppercase tracking-widest">
+              <div className="bg-[var(--bg-card)] border border-[var(--border-tech)] rounded-xl overflow-hidden shadow-xl text-left">
+                <div className="p-4 bg-[var(--bg-input)] border-b border-[var(--border-tech)] flex justify-between items-center font-mono">
+                  <span className="text-[var(--text-muted)] text-[10px] sm:text-xs uppercase tracking-widest">
                     📂 Tarjetas Sincronizadas ({destinations.length})
                   </span>
-                  <span className="text-[8px] sm:text-[9px] text-gray-500 uppercase">
+                  <span className="text-[8px] sm:text-[9px] text-[var(--text-muted)] uppercase">
                     Triple Frontera Argentina - Brasil - Paraguay
                   </span>
                 </div>
 
                 <div className="overflow-x-auto">
                   {destinations.length === 0 ? (
-                    <div className="p-12 text-center text-gray-500 font-mono text-xs uppercase">
+                    <div className="p-12 text-center text-[var(--text-muted)] font-mono text-xs uppercase">
                       No hay destinos cargados en la base de datos.
                     </div>
                   ) : (
                     <table className="w-full text-left font-mono text-xs">
                       <thead>
-                        <tr className="bg-[#0a0c0d] text-gray-500 uppercase text-[9px] tracking-widest border-b border-gray-800">
+                        <tr className="bg-[var(--bg-app)] text-[var(--text-muted)] uppercase text-[9px] tracking-widest border-b border-[var(--border-tech)]">
                           <th className="p-4 text-left">ACCIONES</th>
                           <th className="p-4">ORDEN</th>
                           <th className="p-4">IMAGEN</th>
@@ -1244,14 +1244,14 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                       </thead>
                       <tbody className="divide-y divide-gray-800">
                         {[...destinations].sort((a, b) => (a.order ?? 999) - (b.order ?? 999)).map((dest) => (
-                          <tr key={dest.id} className="hover:bg-[#111415]/50 transition-colors">
+                          <tr key={dest.id} className="hover:bg-[var(--bg-input)]/50 transition-colors">
 
                             {/* Actions Column (pencil and bin only - labels are hidden on mobile) */}
                             <td className="p-4 text-left">
                               <div className="flex gap-1.5 justify-start items-center">
                                 <button
                                   onClick={() => handleEdit(dest)}
-                                  className="p-2 border border-gray-800 text-gray-300 hover:text-[#65d6e9] hover:border-[#65d6e9]/40 rounded-lg transition-all cursor-pointer bg-gray-900/40"
+                                  className="p-2 border border-[var(--border-tech)] text-[var(--text-main)] hover:text-[var(--color-primary-base)] hover:border-[var(--color-primary-base)]/40 rounded-lg transition-all cursor-pointer bg-gray-900/40"
                                   title="Modificar destino"
                                 >
                                   <Edit className="h-3.5 w-3.5" />
@@ -1259,7 +1259,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                                 <button
                                   onClick={() => handleDelete(dest.id)}
-                                  className="p-2 border border-transparent text-gray-500 hover:text-red-400 hover:border-red-500/25 rounded-lg transition-all cursor-pointer"
+                                  className="p-2 border border-transparent text-[var(--text-muted)] hover:text-red-400 hover:border-red-500/25 rounded-lg transition-all cursor-pointer"
                                   title="Eliminar tarjeta"
                                 >
                                   <Trash2 className="h-3.5 w-3.5" />
@@ -1269,14 +1269,14 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                             {/* Order number */}
                             <td className="p-4 text-center">
-                              <span className="text-white font-mono text-xs font-bold bg-[#65d6e9]/10 border border-[#65d6e9]/20 px-2 py-0.5 rounded">
+                              <span className="text-[var(--text-main)] font-mono text-xs font-bold bg-[var(--color-primary-base)]/10 border border-[var(--color-primary-base)]/20 px-2 py-0.5 rounded">
                                 {dest.order ?? '—'}
                               </span>
                             </td>
 
                             {/* Visual Tiny Image preview */}
                             <td className="p-4">
-                              <div className="w-12 h-10 rounded bg-[#0a0c0d] overflow-hidden border border-gray-800">
+                              <div className="w-12 h-10 rounded bg-[var(--bg-app)] overflow-hidden border border-[var(--border-tech)]">
                                 <img
                                   src={dest.imageUrl}
                                   alt={dest.title}
@@ -1290,22 +1290,22 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                             {/* Title / Description info */}
                             <td className="p-4 max-w-xs">
-                              <div className="text-white font-semibold text-xs sm:text-sm truncate leading-snug">{dest.title}</div>
-                              <div className="text-[9px] text-gray-500 font-sans line-clamp-1 mt-0.5">{dest.description}</div>
+                              <div className="text-[var(--text-main)] font-semibold text-xs sm:text-sm truncate leading-snug">{dest.title}</div>
+                              <div className="text-[9px] text-[var(--text-muted)] font-sans line-clamp-1 mt-0.5">{dest.description}</div>
                             </td>
 
                             {/* Country and filter categorization */}
                             <td className="p-4">
-                              <span className="text-gray-300 block text-[11px] font-semibold leading-tight">{dest.country}</span>
-                              <span className="text-[8px] text-[#65d6e9] bg-[#65d6e9]/10 px-2 py-0.5 rounded border border-[#65d6e9]/20 font-bold inline-block mt-0.5">
+                              <span className="text-[var(--text-main)] block text-[11px] font-semibold leading-tight">{dest.country}</span>
+                              <span className="text-[8px] text-[var(--color-primary-base)] bg-[var(--color-primary-base)]/10 px-2 py-0.5 rounded border border-[var(--color-primary-base)]/20 font-bold inline-block mt-0.5">
                                 {dest.code}
                               </span>
                             </td>
 
                             {/* ARS pricing */}
                             <td className="p-4 text-[10px] sm:text-xs">
-                              <div className="text-gray-300">4 pax: <strong className="text-white">${dest.price4Pax?.toLocaleString()}</strong></div>
-                              <div className="text-gray-500 mt-0.5">6 pax: ${dest.price6Pax?.toLocaleString()}</div>
+                              <div className="text-[var(--text-main)]">4 pax: <strong className="text-[var(--text-main)]">${dest.price4Pax?.toLocaleString()}</strong></div>
+                              <div className="text-[var(--text-muted)] mt-0.5">6 pax: ${dest.price6Pax?.toLocaleString()}</div>
                             </td>
 
                             {/* USD pricing */}
@@ -1342,12 +1342,12 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
             <div className="space-y-6 animate-fade-in text-left">
 
               {/* User management control dashboard bar */}
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-[#0f1214] border border-gray-800 p-5 rounded-xl gap-4">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-[var(--bg-card)] border border-[var(--border-tech)] p-5 rounded-xl gap-4">
                 <div>
-                  <h3 className="text-base sm:text-lg font-display font-extrabold text-white uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg font-display font-extrabold text-[var(--text-main)] uppercase tracking-tight">
                     INTEGRANTES Y CREDENCIALES DE ACCESO
                   </h3>
-                  <p className="text-[9px] font-mono text-gray-500 uppercase mt-1 tracking-wider">
+                  <p className="text-[9px] font-mono text-[var(--text-muted)] uppercase mt-1 tracking-wider">
                     Exclusivo Administrador: blanqueo de claves, asignación de roles de cooperación y altas de personal.
                   </p>
                 </div>
@@ -1356,7 +1356,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                   <button
                     onClick={handleResetUsersToDefaults}
                     type="button"
-                    className="bg-transparent border border-gray-800 text-gray-400 font-mono text-[9px] hover:text-red-400 hover:border-red-500/20 px-3.5 py-2 rounded hover:bg-gray-900 transition-all cursor-pointer uppercase tracking-widest"
+                    className="bg-transparent border border-[var(--border-tech)] text-[var(--text-muted)] font-mono text-[9px] hover:text-red-400 hover:border-red-500/20 px-3.5 py-2 rounded hover:bg-gray-900 transition-all cursor-pointer uppercase tracking-widest"
                   >
                     Resetear
                   </button>
@@ -1364,7 +1364,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                   <button
                     onClick={fetchUsers}
                     type="button"
-                    className="bg-transparent border border-gray-800 text-gray-300 font-mono text-[9px] hover:border-[#65d6e9]/30 hover:text-[#65d6e9] px-3.5 py-2 rounded transition-all cursor-pointer flex items-center gap-1.5 uppercase tracking-widest"
+                    className="bg-transparent border border-[var(--border-tech)] text-[var(--text-main)] font-mono text-[9px] hover:border-[var(--color-primary-base)]/30 hover:text-[var(--color-primary-base)] px-3.5 py-2 rounded transition-all cursor-pointer flex items-center gap-1.5 uppercase tracking-widest"
                     title="Actualizar listado de integrantes"
                   >
                     <RefreshCw className="h-3 w-3" />
@@ -1374,7 +1374,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                   <button
                     onClick={handleAddNewUser}
                     type="button"
-                    className="bg-[#65d6e9] text-[#0a0c0d] font-mono text-[9px] font-bold uppercase px-4 py-2 rounded hover:bg-white transition-all cursor-pointer flex items-center gap-1.5 shadow-[0_0_15px_rgba(101,214,233,0.3)] tracking-widest ml-auto"
+                    className="bg-[var(--color-primary-base)] text-[var(--bg-app)] font-mono text-[9px] font-bold uppercase px-4 py-2 rounded hover:bg-white transition-all cursor-pointer flex items-center gap-1.5 shadow-[0_0_15px_rgba(101,214,233,0.3)] tracking-widest ml-auto"
                   >
                     <UserPlus className="h-3.5 w-3.5" />
                     Alta Usuario
@@ -1384,14 +1384,14 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
               {/* USER REGISTRATION / MODIFICATION AND PASSWORD RESET BLANQUEO MODAL */}
               {isUserEditing && activeUser && (
-                <div className="bg-[#0f1214] border border-[#65d6e9]/25 rounded-xl p-5 sm:p-6 md:p-8 space-y-6 shadow-2xl relative animate-slide-up">
+                <div className="bg-[var(--bg-card)] border border-[var(--color-primary-base)]/25 rounded-xl p-5 sm:p-6 md:p-8 space-y-6 shadow-2xl relative animate-slide-up">
 
-                  <div className="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-gray-800">
-                    <h3 className="text-sm sm:text-base font-display font-bold text-white uppercase tracking-tight">
+                  <div className="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-[var(--border-tech)]">
+                    <h3 className="text-sm sm:text-base font-display font-bold text-[var(--text-main)] uppercase tracking-tight">
                       {activeUser.id ? `Modificar Usuario: "${activeUser.fullName}" // Blanqueo` : 'Registrar Nuevo Cooperador'}
                     </h3>
                     <div className="flex items-center justify-between w-full sm:w-auto gap-3">
-                      <span className="bg-[#65d6e9]/10 text-[#65d6e9] border border-[#65d6e9]/30 text-[9px] font-mono px-3 py-1 rounded">
+                      <span className="bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border border-[var(--color-primary-base)]/30 text-[9px] font-mono px-3 py-1 rounded">
                         GESTIÓN DE PRIVILEGIOS DE ACCESOS
                       </span>
                       <button
@@ -1399,7 +1399,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                           setIsUserEditing(false);
                           setActiveUser(null);
                         }}
-                        className="text-gray-400 hover:text-white p-1 hover:bg-gray-800 rounded cursor-pointer"
+                        className="text-[var(--text-muted)] hover:text-[var(--text-main)] p-1 hover:bg-gray-800 rounded cursor-pointer"
                         title="Cerrar editor de usuario"
                       >
                         <X className="h-5 w-5" />
@@ -1412,13 +1412,13 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                       {/* Name of the system member */}
                       <div className="font-sans">
-                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                        <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5">
                           Nombre Completo del Operador *
                         </label>
                         <input
                           required
                           type="text"
-                          className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 text-white font-sans text-xs focus:outline-none"
+                          className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 text-[var(--text-main)] font-sans text-xs focus:outline-none"
                           placeholder="Ej. Juan de Iguazú"
                           value={activeUser.fullName || ''}
                           onChange={(e) => setActiveUser({ ...activeUser, fullName: e.target.value })}
@@ -1427,14 +1427,14 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                       {/* Login username identification */}
                       <div>
-                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                        <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5">
                           Nombre de Usuario (Login Identifier) *
                         </label>
                         <input
                           required
                           type="text"
                           disabled={!!activeUser.id}
-                          className={`w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 text-white font-mono text-xs focus:outline-none ${activeUser.id ? 'opacity-55 cursor-not-allowed' : ''
+                          className={`w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 text-[var(--text-main)] font-mono text-xs focus:outline-none ${activeUser.id ? 'opacity-55 cursor-not-allowed' : ''
                             }`}
                           placeholder="Ej. juan.iguazu"
                           value={activeUser.username || ''}
@@ -1447,30 +1447,30 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                       {/* User Password / Optional Blanqueo Reset keys */}
                       <div>
-                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                        <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5">
                           Contraseña / Clave de Acceso *
                         </label>
                         <input
                           required={!activeUser.id}
                           type="text"
-                          className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 text-white font-mono text-xs focus:outline-none"
+                          className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 text-[var(--text-main)] font-mono text-xs focus:outline-none"
                           placeholder={activeUser.id ? 'Escriba nueva clave para blanquear contraseña' : 'Ej. juanClave456'}
                           value={activeUser.password || ''}
                           onChange={(e) => setActiveUser({ ...activeUser, password: e.target.value })}
                         />
                         {activeUser.id && (
-                          <span className="text-[8px] text-[#65d6e9]/50 block mt-1.5">Deje vacío si solo desea actualizar datos complementarios sin blanquear su contraseña.</span>
+                          <span className="text-[8px] text-[var(--color-primary-base)]/50 block mt-1.5">Deje vacío si solo desea actualizar datos complementarios sin blanquear su contraseña.</span>
                         )}
                       </div>
 
                       {/* User privilege roles picker */}
                       <div>
-                        <label className="block text-gray-400 font-mono text-[9px] uppercase tracking-widest mb-1.5">
+                        <label className="block text-[var(--text-muted)] font-mono text-[9px] uppercase tracking-widest mb-1.5">
                           Rol Operativo Asignado *
                         </label>
                         <select
                           required
-                          className="w-full bg-[#0a0c0d] border border-gray-800 focus:border-[#65d6e9] rounded p-2.5 text-white font-mono text-xs focus:outline-none"
+                          className="w-full bg-[var(--bg-app)] border border-[var(--border-tech)] focus:border-[var(--color-primary-base)] rounded p-2.5 text-[var(--text-main)] font-mono text-xs focus:outline-none"
                           value={activeUser.role || 'usuario'}
                           onChange={(e) => setActiveUser({ ...activeUser, role: e.target.value as 'admin' | 'usuario' })}
                         >
@@ -1482,14 +1482,14 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                     </div>
 
                     {/* Submit or cancel user buttons section */}
-                    <div className="flex justify-end gap-3 pt-5 border-t border-gray-800 font-mono text-[10px] uppercase tracking-wider">
+                    <div className="flex justify-end gap-3 pt-5 border-t border-[var(--border-tech)] font-mono text-[10px] uppercase tracking-wider">
                       <button
                         type="button"
                         onClick={() => {
                           setIsUserEditing(false);
                           setActiveUser(null);
                         }}
-                        className="px-5 py-3 border border-transparent hover:border-gray-800 rounded text-gray-400 hover:text-white transition-all cursor-pointer font-bold"
+                        className="px-5 py-3 border border-transparent hover:border-[var(--border-tech)] rounded text-[var(--text-muted)] hover:text-[var(--text-main)] transition-all cursor-pointer font-bold"
                         disabled={submitting}
                       >
                         Cancelar
@@ -1498,7 +1498,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="bg-[#65d6e9] text-[#0a0c0d] font-bold px-7 py-3 rounded hover:shadow-[0_0_20px_rgba(101,214,233,0.5)] hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer"
+                        className="bg-[var(--color-primary-base)] text-[var(--bg-app)] font-bold px-7 py-3 rounded hover:shadow-[0_0_20px_rgba(101,214,233,0.5)] hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer"
                       >
                         <Save className="h-4 w-4" />
                         {submitting ? 'Guardando...' : 'Fijar Credenciales y Grabar'}
@@ -1510,29 +1510,29 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
               )}
 
               {/* LISTING DATATABLE FOR COOPERATIVE USERS */}
-              <div className="bg-[#0f1214] border border-gray-800 rounded-xl overflow-hidden shadow-xl text-left">
-                <div className="p-4 bg-[#111415] border-b border-gray-800 flex justify-between items-center font-mono">
-                  <span className="text-gray-400 text-[10px] sm:text-xs uppercase tracking-widest">
+              <div className="bg-[var(--bg-card)] border border-[var(--border-tech)] rounded-xl overflow-hidden shadow-xl text-left">
+                <div className="p-4 bg-[var(--bg-input)] border-b border-[var(--border-tech)] flex justify-between items-center font-mono">
+                  <span className="text-[var(--text-muted)] text-[10px] sm:text-xs uppercase tracking-widest">
                     📂 Integrantes de la Plataforma ({users.length})
                   </span>
-                  <span className="text-[8px] sm:text-[9px] text-gray-500 uppercase">
+                  <span className="text-[8px] sm:text-[9px] text-[var(--text-muted)] uppercase">
                     Terminal Internacional Iguazú (Triple Frontera)
                   </span>
                 </div>
 
                 <div className="overflow-x-auto">
                   {loadingUsers ? (
-                    <div className="p-12 text-center text-gray-500 font-mono text-xs uppercase animate-pulse">
+                    <div className="p-12 text-center text-[var(--text-muted)] font-mono text-xs uppercase animate-pulse">
                       Consultando base de datos segura de integrantes...
                     </div>
                   ) : users.length === 0 ? (
-                    <div className="p-12 text-center text-gray-500 font-mono text-xs uppercase">
+                    <div className="p-12 text-center text-[var(--text-muted)] font-mono text-xs uppercase">
                       No hay usuarios cargados en este momento.
                     </div>
                   ) : (
                     <table className="w-full text-left font-mono text-xs">
                       <thead>
-                        <tr className="bg-[#0a0c0d] text-gray-500 uppercase text-[9px] tracking-widest border-b border-gray-800">
+                        <tr className="bg-[var(--bg-app)] text-[var(--text-muted)] uppercase text-[9px] tracking-widest border-b border-[var(--border-tech)]">
                           <th className="p-4">ACCIONES DE CONTROL</th>
                           <th className="p-4">APODO / NOMBRE</th>
                           <th className="p-4">IDENTIFICADOR (LOGIN)</th>
@@ -1542,14 +1542,14 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                       </thead>
                       <tbody className="divide-y divide-gray-800">
                         {users.map((item) => (
-                          <tr key={item.id} className="hover:bg-[#111415]/50 transition-colors">
+                          <tr key={item.id} className="hover:bg-[var(--bg-input)]/50 transition-colors">
 
                             {/* Controls Column (pencil and bin only - labels are hidden on mobile) */}
                             <td className="p-4">
                               <div className="flex gap-2 justify-start items-center">
                                 <button
                                   onClick={() => handleEditUser(item)}
-                                  className="p-2 sm:px-3 border border-gray-800 text-gray-300 hover:text-[#65d6e9] hover:border-[#65d6e9]/40 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer bg-gray-900/40"
+                                  className="p-2 sm:px-3 border border-[var(--border-tech)] text-[var(--text-main)] hover:text-[var(--color-primary-base)] hover:border-[var(--color-primary-base)]/40 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer bg-gray-900/40"
                                   title="Blanquear contraseña // Editar apodo"
                                 >
                                   <Edit className="h-3.5 w-3.5" />
@@ -1558,7 +1558,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                                 <button
                                   onClick={() => handleDeleteUser(item.id)}
-                                  className="p-2 sm:px-3 border border-transparent text-gray-500 hover:text-red-400 hover:border-red-500/25 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer"
+                                  className="p-2 sm:px-3 border border-transparent text-[var(--text-muted)] hover:text-red-400 hover:border-red-500/25 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer"
                                   title="Dar de baja este integrante"
                                   disabled={item.id === 'u-1' || item.id === 'u-admin'}
                                 >
@@ -1570,7 +1570,7 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
 
                             {/* Full Name */}
                             <td className="p-4">
-                              <div className="text-white font-semibold text-xs sm:text-sm">{item.fullName}</div>
+                              <div className="text-[var(--text-main)] font-semibold text-xs sm:text-sm">{item.fullName}</div>
                             </td>
 
                             {/* Login details */}
@@ -1579,15 +1579,15 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
                             </td>
 
                             {/* Visible password string for simple blanqueo operations review */}
-                            <td className="p-4 text-gray-400 font-mono text-xs">
+                            <td className="p-4 text-[var(--text-muted)] font-mono text-xs">
                               <code>{item.password || '••••••'}</code>
                             </td>
 
                             {/* Privilege Role Tag */}
                             <td className="p-4">
                               <span className={`px-2.5 py-1 text-[8px] sm:text-[9px] font-extrabold rounded uppercase tracking-wider inline-block ${item.role === 'admin'
-                                ? 'bg-[#65d6e9]/10 text-[#65d6e9] border border-[#65d6e9]/20'
-                                : 'bg-gray-800 text-gray-400 border border-gray-700'
+                                ? 'bg-[var(--color-primary-base)]/10 text-[var(--color-primary-base)] border border-[var(--color-primary-base)]/20'
+                                : 'bg-gray-800 text-[var(--text-muted)] border border-gray-700'
                                 }`}>
                                 {item.role === 'admin' ? '🛡️ Administrador' : '👥 Cooperador'}
                               </span>
@@ -1609,19 +1609,19 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
           {/* ========================================================= */}
           {currentTab === 'messages' && (
             <div className="space-y-6 animate-fade-in text-left">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-[#0f1214] border border-gray-800 p-5 rounded-xl gap-4">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-[var(--bg-card)] border border-[var(--border-tech)] p-5 rounded-xl gap-4">
                 <div>
-                  <h3 className="text-base sm:text-lg font-display font-extrabold text-white uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg font-display font-extrabold text-[var(--text-main)] uppercase tracking-tight">
                     Bandeja de Entrada
                   </h3>
-                  <p className="text-[9px] font-mono text-gray-500 uppercase mt-1 tracking-wider">
+                  <p className="text-[9px] font-mono text-[var(--text-muted)] uppercase mt-1 tracking-wider">
                     Consultas recibidas desde el formulario de contacto público.
                   </p>
                 </div>
                 <button
                   onClick={fetchMessages}
                   type="button"
-                  className="bg-transparent border border-gray-800 text-gray-300 font-mono text-[9px] hover:border-[#65d6e9]/30 hover:text-[#65d6e9] px-3.5 py-2 rounded transition-all cursor-pointer flex items-center gap-1.5 uppercase tracking-widest"
+                  className="bg-transparent border border-[var(--border-tech)] text-[var(--text-main)] font-mono text-[9px] hover:border-[var(--color-primary-base)]/30 hover:text-[var(--color-primary-base)] px-3.5 py-2 rounded transition-all cursor-pointer flex items-center gap-1.5 uppercase tracking-widest"
                 >
                   <RefreshCw className="h-3 w-3" />
                   Actualizar
@@ -1629,43 +1629,43 @@ export default function AdminPanel({ destinations, onRefresh }: AdminPanelProps)
               </div>
 
               {loadingMessages ? (
-                <div className="p-12 text-center text-gray-500 font-mono text-xs uppercase animate-pulse bg-[#0f1214] border border-gray-800 rounded-xl">
+                <div className="p-12 text-center text-[var(--text-muted)] font-mono text-xs uppercase animate-pulse bg-[var(--bg-card)] border border-[var(--border-tech)] rounded-xl">
                   Buscando mensajes nuevos...
                 </div>
               ) : messages.length === 0 ? (
-                <div className="p-12 text-center text-gray-500 font-mono text-xs uppercase bg-[#0f1214] border border-gray-800 rounded-xl">
+                <div className="p-12 text-center text-[var(--text-muted)] font-mono text-xs uppercase bg-[var(--bg-card)] border border-[var(--border-tech)] rounded-xl">
                   La bandeja de entrada está vacía.
                 </div>
               ) : (
                 <div className="grid grid-cols-1 gap-4">
                   {messages.map((msg) => (
-                    <div key={msg.id} className="bg-[#0f1214] border border-gray-800 rounded-xl p-5 shadow-xl relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-1 h-full bg-[#65d6e9]/50"></div>
+                    <div key={msg.id} className="bg-[var(--bg-card)] border border-[var(--border-tech)] rounded-xl p-5 shadow-xl relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-1 h-full bg-[var(--color-primary-base)]/50"></div>
 
                       <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
                         <div>
-                          <h4 className="text-white font-bold text-sm">{msg.name}</h4>
-                          <p className="text-[#65d6e9] text-xs font-mono">{msg.email}</p>
-                          <p className="text-gray-400 text-xs font-mono">{msg.phone || 'Sin teléfono'}</p>
+                          <h4 className="text-[var(--text-main)] font-bold text-sm">{msg.name}</h4>
+                          <p className="text-[var(--color-primary-base)] text-xs font-mono">{msg.email}</p>
+                          <p className="text-[var(--text-muted)] text-xs font-mono">{msg.phone || 'Sin teléfono'}</p>
                         </div>
                         <div className="text-right">
-                          <span className="bg-gray-800 text-gray-300 text-[10px] font-mono px-2 py-1 rounded uppercase tracking-wider">
+                          <span className="bg-gray-800 text-[var(--text-main)] text-[10px] font-mono px-2 py-1 rounded uppercase tracking-wider">
                             Asunto: {msg.subject}
                           </span>
-                          <p className="text-gray-500 text-[9px] font-mono uppercase mt-2">
+                          <p className="text-[var(--text-muted)] text-[9px] font-mono uppercase mt-2">
                             {new Date(msg.createdAt).toLocaleString()}
                           </p>
                         </div>
                       </div>
 
-                      <div className="bg-[#0a0c0d] border border-gray-800 rounded p-4 text-gray-300 text-sm font-sans whitespace-pre-wrap">
+                      <div className="bg-[var(--bg-app)] border border-[var(--border-tech)] rounded p-4 text-[var(--text-main)] text-sm font-sans whitespace-pre-wrap">
                         {msg.message}
                       </div>
 
                       <div className="mt-4 flex justify-end">
                         <button
                           onClick={() => handleDeleteMessage(msg.id!)}
-                          className="text-gray-500 hover:text-red-400 border border-transparent hover:border-red-500/30 px-3 py-1.5 rounded flex items-center gap-1.5 transition-all cursor-pointer font-mono text-[10px] uppercase"
+                          className="text-[var(--text-muted)] hover:text-red-400 border border-transparent hover:border-red-500/30 px-3 py-1.5 rounded flex items-center gap-1.5 transition-all cursor-pointer font-mono text-[10px] uppercase"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
                           Eliminar
